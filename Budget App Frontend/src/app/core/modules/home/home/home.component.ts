@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
 
+interface Transaction {
+  date: Date;
+  type: string;
+  amount: number;
+}
+
 @Component({
   selector: 'app-home',
-  standalone: true,
-  imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+
+export class HomeComponent{
 
 }
