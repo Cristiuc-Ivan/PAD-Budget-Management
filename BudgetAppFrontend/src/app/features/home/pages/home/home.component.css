@@ -1,0 +1,122 @@
+/* Global Styles */
+body, html {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Hero Section */
+.hero-section {
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), /* Черный фильтр с прозрачностью 60% */
+    url('/assets/fin_back.jpeg') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Центрируем контент внутри hero-content */
+.hero-content {
+  max-width: 1100px; /* Ограничиваем ширину контента */
+  padding: 20px;
+}
+
+.hero-content h1 {
+  font-size: 70px;
+  line-height: 1.1; /* Уменьшенная высота строки для более плотного текста */
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.hero-content p {
+  font-size: 50px;
+  line-height: 1.3; /* Увеличенная высота строки для улучшенной читаемости */
+  margin-bottom: 40px; /* Больше отступа под текстом */
+}
+
+.hero-content button {
+  font-size: 35px;
+  padding: 28px 33px; /* Добавляем отступы внутри кнопки */
+  border-radius: 25px; /* Слегка закругленные углы */
+}
+
+/* About Section */
+.about-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.about-content h2 {
+  font-size: 1.8em;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.about-content p {
+  font-size: 1em;
+  text-align: center;
+}
+
+.about-content button {
+  margin-top: 10px;
+}
+
+/* Features Section */
+.features-section {
+  padding: 40px 20px;
+  text-align: center;
+  background: #005cbb;
+}
+
+.features-section h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.features-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.feature-card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрируем содержимое по горизонтали */
+  justify-content: center; /* Центрируем содержимое по вертикали */
+  text-align: center;
+}
+
+.feature-card mat-icon {
+  font-size: 26px; /* Увеличиваем размер иконки */
+  margin-bottom: 10px;
+  color: #00796b;
+}
+
+.feature-card mat-card-title {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+/* Footer */
+.footer {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}

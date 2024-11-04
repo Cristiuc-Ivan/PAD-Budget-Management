@@ -1,0 +1,20 @@
+<mat-toolbar>
+  <mat-toolbar-row style="height:70px; background: #005cbb; position: relative; color: white;
+                          box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1)">
+    <span [routerLink]="['/']">Subscription Learn</span>
+    <div class="spacer"></div>
+    <li routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">
+      <a mat-button [routerLink]="['/']">Home</a>
+    </li>
+    <li routerLinkActive="active">
+      <a mat-button [routerLink]="['/faq']">FAQ</a>
+    </li>
+    <li routerLinkActive="active">
+      <a mat-button [routerLink]="['/portfolio']">Portfolio</a>
+    </li>
+
+<!--    <ng-container *ngIf="isAnonymous$ | async">-->
+<!--      <a mat-raised-button style="background-color: powderblue" [routerLink]="['/login']">Log In</a>-->
+<!--    </ng-container>-->
+  </mat-toolbar-row>
+</mat-toolbar>

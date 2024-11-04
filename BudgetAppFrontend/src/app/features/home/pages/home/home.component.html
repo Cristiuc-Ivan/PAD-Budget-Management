@@ -1,63 +1,54 @@
-<mat-toolbar color="primary" class="toolbar">
-  <span>Personal Budget Management</span>
-</mat-toolbar>
+<app-navigation></app-navigation>
 
-<mat-card class="intro-card">
-  <mat-card-header>
-    <mat-card-title>Welcome to the Personal Budget Management System!</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p>
-      This site is designed to help you control your finances, track your expenses and income,
-      analyze financial reports, and plan your budget.
-    </p>
-  </mat-card-content>
-</mat-card>
+<section class="hero-section">
+  <div class="hero-content">
+    <h1>Take Control of Your Finances</h1>
+    <p>Manage expenses, track income, and plan budgets with ease.</p>
+    <button mat-flat-button>Get Started</button>
+  </div>
+</section>
 
-<mat-divider></mat-divider>
+<section class="about-section mat-elevation-z4">
+  <div class="about-content">
+    <div>
+      <h2>About Us</h2>
+      <p>Our app helps you stay on top of your finances with real-time tracking, reporting, and budgeting tools.</p>
+      <button mat-stroked-button color="primary">Learn More</button>
+    </div>
+  </div>
+</section>
 
-<div class="features-section">
-  <mat-card class="feature-card">
-    <mat-card-header>
-      <mat-card-title>Expense and Income Tracking</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        Enter data about your daily expenses and income to always have up-to-date information about your financial status.
-      </p>
-    </mat-card-content>
-  </mat-card>
+<section class="features-section">
+  <h2>Features</h2>
+  <div class="features-grid">
+    <mat-card class="feature-card">
+      <mat-icon>account_balance_wallet</mat-icon>
+      <mat-card-title>Expense Tracking</mat-card-title>
+      <mat-card-content>Track daily expenses with ease.</mat-card-content>
+    </mat-card>
 
-  <mat-card class="feature-card">
-    <mat-card-header>
-      <mat-card-title>Automatic Currency Conversion</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        Support for multiple currencies with automatic rate updates for convenient handling of international transactions.
-      </p>
-    </mat-card-content>
-  </mat-card>
+    <mat-card class="feature-card">
+      <mat-icon>attach_money</mat-icon>
+      <mat-card-title>Currency Conversion</mat-card-title>
+      <mat-card-content>Automatic rate updates for international transactions.</mat-card-content>
+    </mat-card>
 
-  <mat-card class="feature-card">
-    <mat-card-header>
-      <mat-card-title>Analysis and Reports</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <p>
-        Generate reports and charts to clearly see where your money is going and where you can save.
-      </p>
-    </mat-card-content>
-  </mat-card>
-</div>
+    <mat-card class="feature-card">
+      <mat-icon>bar_chart</mat-icon>
+      <mat-card-title>Detailed Reports</mat-card-title>
+      <mat-card-content>Visualize your spending and saving trends.</mat-card-content>
+    </mat-card>
 
-<mat-divider></mat-divider>
+    <mat-card class="feature-card">
+      <mat-icon>public</mat-icon>
+      <mat-card-title>About Our Website</mat-card-title>
+      <mat-card-content>
+        Learn how our platform helps you take control of your finances with user-friendly tools and resources.
+      </mat-card-content>
+    </mat-card>
 
-<mat-card class="cta-card">
-  <mat-card-content>
-    <h2>Start managing your finances right now!</h2>
-    <p>Create an account and gain access to all the system's features.</p>
-    <button mat-raised-button color="primary">Sign Up</button>
-  </mat-card-content>
-</mat-card>
+  </div>
+</section>
+
+<app-footer></app-footer>
 

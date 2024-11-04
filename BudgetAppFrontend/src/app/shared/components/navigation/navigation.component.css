@@ -1,0 +1,43 @@
+::ng-deep .mat-menu-content {
+  background-color: white !important;
+  color: grey  !important;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+
+span {
+  font-weight: bold;
+  letter-spacing: 2.2px;
+}
+
+li {
+  list-style: none;
+  padding: 7px;
+  color: white;
+}
+
+li a {
+  color: white !important;
+  text-decoration: none;
+}
+
+li.active a {
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  color: white;
+  cursor: default;
+}
+
+.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}

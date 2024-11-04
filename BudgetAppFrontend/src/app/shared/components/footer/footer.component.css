@@ -1,0 +1,28 @@
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-name {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.copyright {
+  font-size: 0.8em;
+}
+
+.mat-elevation-z2 {
+  width: 100%;
+  height: 80px;
+  background-color: white;
+}
+
+span {
+  color: black;
+}

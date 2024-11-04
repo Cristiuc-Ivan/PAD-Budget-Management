@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './pages/home/home.component';
 import { RouterModule } from '@angular/router';
 import {MaterialModule} from '../../shared/material.module';
+import {ComponentsModule} from '../../shared/components/components.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,9 @@ import {MaterialModule} from '../../shared/material.module';
   imports: [
     CommonModule,       // Общие директивы Angular
     RouterModule,       // Поддержка маршрутизации
-    MaterialModule,      // Импортируем MaterialModule
+    MaterialModule,
+    ComponentsModule,
+    // Импортируем MaterialModule
   ],
   exports: [
     HomeComponent   // Экспортируем компонент, если потребуется
