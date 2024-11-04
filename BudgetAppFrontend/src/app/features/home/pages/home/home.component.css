@@ -22,8 +22,20 @@ body, html {
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: zoomIn 30s ease-in-out infinite;
 }
 
+@keyframes zoomIn {
+  0% {
+    background-size: 100%;
+  }
+  50% {
+    background-size: 110%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
 
 /* Центрируем контент внутри hero-content */
 .hero-content {
@@ -56,61 +68,75 @@ body, html {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 40px 20px;
+  padding: 50px 50px;
 }
 
 .about-content h2 {
-  font-size: 1.8em;
+  font-size: 42px;
   margin-bottom: 10px;
   text-align: center;
+  font-weight: bold;
 }
 
 .about-content p {
-  font-size: 1em;
+  font-size: 24px;
   text-align: center;
 }
 
 .about-content button {
+  font-size: 24px;
   margin-top: 10px;
 }
 
 /* Features Section */
 .features-section {
-  padding: 40px 20px;
+  padding: 40px;
   text-align: center;
   background: #005cbb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .features-section h2 {
-  font-size: 2em;
+  font-size: 42px;
   margin-bottom: 20px;
   color: white;
+  font-weight: bold;
 }
 
 .features-grid {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  width: 100%;
+  max-width: 1000px; /* Limits the grid width */
+  margin: 0 auto; /* Centers the grid within the section */
+  flex-wrap: wrap;
 }
 
 .feature-card {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Центрируем содержимое по горизонтали */
-  justify-content: center; /* Центрируем содержимое по вертикали */
+  align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
 .feature-card mat-icon {
-  font-size: 26px; /* Увеличиваем размер иконки */
+  font-size: 26px;
   margin-bottom: 10px;
   color: #00796b;
 }
 
 .feature-card mat-card-title {
   font-weight: bold;
-  font-size: 1.2em;
+  font-size: 24px;
+}
+
+.feature-card mat-card-content {
+  padding: 5px;
 }
 
 /* Footer */
