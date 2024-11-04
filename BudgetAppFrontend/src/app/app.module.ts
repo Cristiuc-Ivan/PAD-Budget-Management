@@ -6,6 +6,7 @@ import {MaterialModule} from './shared/material.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {HomeModule} from './features/home/home.module';
 import {ComponentsModule} from './shared/components/components.module';
+import {FaqModule} from './features/faq/faq.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,6 +15,7 @@ import {ComponentsModule} from './shared/components/components.module';
     BrowserModule,
     MaterialModule,
     HomeModule,
+    FaqModule,
     ComponentsModule,
   ],
   providers: [

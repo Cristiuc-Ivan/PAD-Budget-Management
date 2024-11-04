@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {RouterLinkActive} from '@angular/router';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import {RouterLinkActive} from '@angular/router';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatExpansionModule,
     RouterLinkActive,
   ],
   exports: [
@@ -25,6 +27,7 @@ import {RouterLinkActive} from '@angular/router';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatExpansionModule,
     RouterLinkActive,
   ]
 })

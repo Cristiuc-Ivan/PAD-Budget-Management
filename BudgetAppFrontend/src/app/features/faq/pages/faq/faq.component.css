@@ -1,0 +1,46 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: Montserrat, sans-serif;
+  background-color: #f4f6f9;
+}
+
+.main-content {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  color: #333;
+  padding-top: 60px;
+  flex-grow: 1;
+  background-color: #f4f6f9;
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 8px;
+  flex-grow: 1;
+  background-color: #f4f6f9;
+}
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+mat-expansion-panel {
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+app-footer {
+  bottom: 0;
+  width: 100%;
+}

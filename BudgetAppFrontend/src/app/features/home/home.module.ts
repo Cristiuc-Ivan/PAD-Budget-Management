@@ -7,17 +7,16 @@ import {ComponentsModule} from '../../shared/components/components.module';
 
 @NgModule({
   declarations: [
-    HomeComponent   // Объявляем HomePageComponent
+    HomeComponent
   ],
   imports: [
-    CommonModule,       // Общие директивы Angular
-    RouterModule,       // Поддержка маршрутизации
+    CommonModule,
+    RouterModule,
     MaterialModule,
     ComponentsModule,
-    // Импортируем MaterialModule
   ],
   exports: [
-    HomeComponent   // Экспортируем компонент, если потребуется
+    HomeComponent
   ]
 })
 export class HomeModule { }
