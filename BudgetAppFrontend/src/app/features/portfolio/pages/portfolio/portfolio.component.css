@@ -1,0 +1,32 @@
+.portfolio-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.portfolio-container h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.portfolio-container p {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.transaction-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.filter-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+#dateFilter {
+  width: 150px;
+}

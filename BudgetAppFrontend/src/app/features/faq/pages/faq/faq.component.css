@@ -12,9 +12,15 @@ body, html {
   margin: 0;
   font-family: Montserrat, sans-serif;
   color: #333;
-  padding-top: 60px;
+  padding-top: 70px;
   flex-grow: 1;
   background-color: #f4f6f9;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .faq-container {
@@ -29,18 +35,21 @@ body, html {
 h1 {
   font-family: 'Montserrat', sans-serif;
   font-weight: bold;
-  font-size: 2rem;
+  font-size: 42px;
   margin-bottom: 20px;
   text-align: center;
   color: #333;
 }
 
+p {
+  font-size: 18px;
+}
+
+mat-panel-title {
+  font-size: 18px;
+}
+
 mat-expansion-panel {
   margin-bottom: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-app-footer {
-  bottom: 0;
-  width: 100%;
 }

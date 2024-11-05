@@ -7,6 +7,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {HomeModule} from './features/home/home.module';
 import {ComponentsModule} from './shared/components/components.module';
 import {FaqModule} from './features/faq/faq.module';
+import {AuthModule} from './features/auth/auth.module';
+import {PortfolioModule} from './features/portfolio/portfolio.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +18,8 @@ import {FaqModule} from './features/faq/faq.module';
     MaterialModule,
     HomeModule,
     FaqModule,
+    AuthModule,
+    PortfolioModule,
     ComponentsModule,
   ],
   providers: [

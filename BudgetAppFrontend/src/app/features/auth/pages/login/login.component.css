@@ -1,0 +1,54 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), /* Черный фильтр с прозрачностью 60% */
+    url('/assets/pexels-karolina-grabowska-4386292.jpg') center/cover no-repeat;
+  animation: zoomIn 30s ease-in-out infinite;
+}
+
+@keyframes zoomIn {
+  0% {
+    background-size: 100%;
+  }
+  50% {
+    background-size: 110%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+
+.auth-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+button {
+  width: 100%;
+  font-size: 18px;
+}

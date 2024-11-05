@@ -1,17 +1,18 @@
 <app-navigation></app-navigation>
 
-<div class="main-content">
-  <div class="faq-container">
-    <h1>Personal Budget Management FAQ</h1>
-    <mat-accordion>
-      <mat-expansion-panel *ngFor="let faq of faqs">
-        <mat-expansion-panel-header>
-          <mat-panel-title>{{ faq.question }}</mat-panel-title>
-        </mat-expansion-panel-header>
-        <p>{{ faq.answer }}</p>
-      </mat-expansion-panel>
-    </mat-accordion>
+<div class="main-container">
+  <div class="main-content">
+    <div class="faq-container">
+      <h1>Personal Budget Management FAQ</h1>
+      <mat-accordion>
+        <mat-expansion-panel *ngFor="let faq of faqs">
+          <mat-expansion-panel-header>
+            <mat-panel-title>{{ faq.question }}</mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>{{ faq.answer }}</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
   </div>
+  <app-footer></app-footer>
 </div>
-
-<app-footer></app-footer>
