@@ -1,77 +1,84 @@
-<div class="portfolio-container">
-  <h1>Portfolio Overview</h1>
-  <p>Total Capital: <span>{{ totalCapital | currency }}</span></p>
+<app-navigation></app-navigation>
 
-  <button mat-raised-button color="primary" (click)="openTransactionDialog()">Add Transaction</button>
+<div class="main-container">
+  <div class="main-content">
+    <div class="portfolio-container">
+      <h1>Portfolio Overview</h1>
+      <p>Total Capital: <span>{{ totalCapital | currency }}</span></p>
 
-  <!-- Filter Options -->
-  <div class="filter-options">
-    <label for="dateFilter">Filter by:</label>
-    <select id="dateFilter" (change)="filterTransactions($event)">
-      <option value="day">Day</option>
-      <option value="week">Week</option>
-      <option value="month">Month</option>
-      <option value="year">Year</option>
-      <option value="all">All Time</option>
-      <option value="custom">Custom Dates</option>
-    </select>
-    <div *ngIf="customDateFilter">
-      <input type="date" (change)="onStartDateChange($event)" placeholder="Start Date" />
-      <input type="date" (change)="onEndDateChange($event)" placeholder="End Date" />
-      <button (click)="applyCustomDateFilter()">Apply</button>
+      <button mat-raised-button color="primary" (click)="openTransactionDialog()">Add Transaction</button>
+
+      <!-- Filter Options -->
+      <div class="filter-options">
+        <label for="dateFilter">Filter by:</label>
+        <select id="dateFilter" (change)="filterTransactions($event)">
+          <option value="day">Day</option>
+          <option value="week">Week</option>
+          <option value="month">Month</option>
+          <option value="year">Year</option>
+          <option value="all">All Time</option>
+          <option value="custom">Custom Dates</option>
+        </select>
+        <div *ngIf="customDateFilter">
+          <input type="date" (change)="onStartDateChange($event)" placeholder="Start Date" />
+          <input type="date" (change)="onEndDateChange($event)" placeholder="End Date" />
+          <button (click)="applyCustomDateFilter()">Apply</button>
+        </div>
+      </div>
+
+      <!-- Transaction Table -->
+      <table mat-table [dataSource]="transactions" class="transaction-table">
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef>Type</th>
+          <td mat-cell *matCellDef="let transaction">{{ transaction.type }}</td>
+        </ng-container>
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef>Amount</th>
+          <td mat-cell *matCellDef="let transaction">{{ transaction.amount | currency }}</td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let transaction">{{ transaction.date | date }}</td>
+        </ng-container>
+        <ng-container matColumnDef="category">
+          <th mat-header-cell *matHeaderCellDef>Category</th>
+          <td mat-cell *matCellDef="let transaction">{{ transaction.category }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
     </div>
+
+    <!-- Add Transaction Dialog -->
+    <ng-template #transactionDialog>
+      <h2>Add Transaction</h2>
+      <form [formGroup]="transactionForm">
+        <mat-radio-group formControlName="type">
+          <mat-radio-button value="Revenues">Revenues</mat-radio-button>
+          <mat-radio-button value="Expenses">Expenses</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Amount</mat-label>
+          <input matInput type="number" formControlName="amount" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="date" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Category</mat-label>
+          <input matInput type="text" formControlName="category" required>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="addTransaction()">Add</button>
+      </form>
+    </ng-template>
   </div>
-
-  <!-- Transaction Table -->
-  <table mat-table [dataSource]="transactions" class="transaction-table">
-    <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef>Type</th>
-      <td mat-cell *matCellDef="let transaction">{{ transaction.type }}</td>
-    </ng-container>
-    <ng-container matColumnDef="amount">
-      <th mat-header-cell *matHeaderCellDef>Amount</th>
-      <td mat-cell *matCellDef="let transaction">{{ transaction.amount | currency }}</td>
-    </ng-container>
-    <ng-container matColumnDef="date">
-      <th mat-header-cell *matHeaderCellDef>Date</th>
-      <td mat-cell *matCellDef="let transaction">{{ transaction.date | date }}</td>
-    </ng-container>
-    <ng-container matColumnDef="category">
-      <th mat-header-cell *matHeaderCellDef>Category</th>
-      <td mat-cell *matCellDef="let transaction">{{ transaction.category }}</td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+  <app-footer></app-footer>
 </div>
-
-<!-- Add Transaction Dialog -->
-<ng-template #transactionDialog>
-  <h2>Add Transaction</h2>
-  <form [formGroup]="transactionForm">
-    <mat-radio-group formControlName="type">
-      <mat-radio-button value="Revenues">Revenues</mat-radio-button>
-      <mat-radio-button value="Expenses">Expenses</mat-radio-button>
-    </mat-radio-group>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Amount</mat-label>
-      <input matInput type="number" formControlName="amount" required>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Date</mat-label>
-      <input matInput [matDatepicker]="picker" formControlName="date" required>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-      <mat-label>Category</mat-label>
-      <input matInput type="text" formControlName="category" required>
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" (click)="addTransaction()">Add</button>
-  </form>
-</ng-template>

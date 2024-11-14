@@ -1,0 +1,15 @@
+/* Стили для формы диалога */
+h2 {
+  text-align: center;
+  font-size: 24px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+mat-form-field, mat-radio-group {
+  width: 100%;
+}

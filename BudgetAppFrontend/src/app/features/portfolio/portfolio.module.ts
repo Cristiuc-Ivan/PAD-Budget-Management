@@ -1,15 +1,17 @@
 import {NgModule} from '@angular/core';
-import {HomeComponent} from '../home/pages/home/home.component';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {MaterialModule} from '../../shared/material.module';
 import {ComponentsModule} from '../../shared/components/components.module';
 import {PortfolioComponent} from './pages/portfolio/portfolio.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {MatDialogModule} from '@angular/material/dialog';
+import {TransactionDialogComponent} from './pages/transaction-dialog/transaction-dialog.component';
 
 @NgModule({
   declarations: [
-    PortfolioComponent
+    PortfolioComponent,
+    TransactionDialogComponent
   ],
   imports: [
     CommonModule,
@@ -17,9 +19,11 @@ import {ReactiveFormsModule} from '@angular/forms';
     MaterialModule,
     ComponentsModule,
     ReactiveFormsModule,
+    MatDialogModule
   ],
   exports: [
-    PortfolioComponent
+    PortfolioComponent,
+    TransactionDialogComponent
   ]
 })
 export class PortfolioModule { }

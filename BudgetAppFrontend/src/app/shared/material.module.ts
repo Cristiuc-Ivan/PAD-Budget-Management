@@ -20,6 +20,7 @@ import {
   MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
   MatTable
 } from '@angular/material/table';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   imports: [
@@ -78,6 +79,7 @@ import {
     MatHeaderRowDef,
     MatRowDef,
     MatDatepickerInput,
+    MatDialogModule,
     RouterLinkActive,
   ]
 })

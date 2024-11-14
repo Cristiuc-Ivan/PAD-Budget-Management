@@ -1,6 +1,7 @@
 import {Component, TemplateRef, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
+import {TransactionDialogComponent} from '../transaction-dialog/transaction-dialog.component';
 
 @Component({
   selector: 'app-portfolio',
@@ -28,7 +29,9 @@ export class PortfolioComponent {
   }
 
   openTransactionDialog() {
-    this.dialog.open(this.transactionDialog);
+    if (this.transactionDialog) {
+      this.dialog.open(TransactionDialogComponent);
+    }
   }
 
   addTransaction() {
