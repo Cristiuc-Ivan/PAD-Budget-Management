@@ -7,7 +7,7 @@ html, body {
   font-family: 'Montserrat', sans-serif;
   background:
     linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)), /* Черный фильтр с прозрачностью 60% */
-    url('/assets/pexels-karolina-grabowska-4386292.jpg') center/cover no-repeat;
+    url('/assets/auth_background.jpg') center/cover no-repeat;
   animation: zoomIn 30s ease-in-out infinite;
 }
 
@@ -24,15 +24,14 @@ html, body {
 }
 
 .auth-container {
-  width: 100%;
   max-width: 400px;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  margin: 50px auto;
+  padding: 30px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
   background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 h2 {
@@ -52,4 +51,14 @@ mat-form-field {
 button {
   width: 100%;
   font-size: 18px;
+}
+
+.custom-button {
+  background-color: #005cbb;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 8px 16px;
+  margin-bottom: 10px;
 }
