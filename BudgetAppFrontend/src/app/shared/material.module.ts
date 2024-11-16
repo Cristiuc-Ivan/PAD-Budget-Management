@@ -7,10 +7,15 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {RouterLinkActive} from '@angular/router';
 import {MatExpansionModule} from '@angular/material/expansion';
-import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatError, MatFormField, MatHint, MatLabel, MatSuffix} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {MatRadioButton, MatRadioGroup} from '@angular/material/radio';
-import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
+import {
+  MatDatepicker,
+  MatDatepickerInput,
+  MatDatepickerModule,
+  MatDatepickerToggle
+} from '@angular/material/datepicker';
 import {
   MatCell,
   MatCellDef,
@@ -21,6 +26,8 @@ import {
   MatTable
 } from '@angular/material/table';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatNativeDateModule, MatOptgroup, MatOption} from '@angular/material/core';
+import {MatSelect} from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -50,6 +57,13 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatHeaderRowDef,
     MatRowDef,
     MatDatepickerInput,
+    MatNativeDateModule,
+    MatError,
+    MatSelect,
+    MatOption,
+    MatDatepickerModule,
+    MatHint,
+    MatSuffix,
     RouterLinkActive,
   ],
   exports: [
@@ -80,6 +94,13 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatRowDef,
     MatDatepickerInput,
     MatDialogModule,
+    MatNativeDateModule,
+    MatError,
+    MatSelect,
+    MatOption,
+    MatDatepickerModule,
+    MatHint,
+    MatSuffix,
     RouterLinkActive,
   ]
 })

@@ -6,23 +6,47 @@
       <h1>Portfolio Overview</h1>
       <p>Total Capital: <span>{{ totalCapital | currency }}</span></p>
 
-      <button mat-raised-button color="primary" (click)="openTransactionDialog()">Add Transaction</button>
+      <div class="actions-container">
+        <button mat-raised-button color="primary" (click)="openTransactionDialog()">Add Transaction</button>
 
-      <!-- Filter Options -->
-      <div class="filter-options">
-        <label for="dateFilter">Filter by:</label>
-        <select id="dateFilter" (change)="filterTransactions($event)">
-          <option value="day">Day</option>
-          <option value="week">Week</option>
-          <option value="month">Month</option>
-          <option value="year">Year</option>
-          <option value="all">All Time</option>
-          <option value="custom">Custom Dates</option>
-        </select>
-        <div *ngIf="customDateFilter">
-          <input type="date" (change)="onStartDateChange($event)" placeholder="Start Date" />
-          <input type="date" (change)="onEndDateChange($event)" placeholder="End Date" />
-          <button (click)="applyCustomDateFilter()">Apply</button>
+        <!-- Filter Options -->
+        <div class="filter-options">
+          <mat-form-field appearance="fill" class="filter-select">
+            <mat-label>Filter by</mat-label>
+            <mat-select (selectionChange)="filterTransactions($event)">
+              <mat-option value="day">Day</mat-option>
+              <mat-option value="week">Week</mat-option>
+              <mat-option value="month">Month</mat-option>
+              <mat-option value="year">Year</mat-option>
+              <mat-option value="all">All Time</mat-option>
+              <mat-option value="custom">Custom Dates</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div *ngIf="customDateFilter" class="custom-date-filter">
+            <mat-form-field>
+              <mat-label>Enter a date range</mat-label>
+              <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+                <input matStartDate formControlName="start" placeholder="Start date">
+                <input matEndDate formControlName="end" placeholder="End date">
+              </mat-date-range-input>
+              <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+
+              <!-- Ошибка для начальной даты -->
+              <mat-error *ngIf="range.controls['start']?.hasError('matStartDateInvalid')">
+                Invalid start date
+              </mat-error>
+
+              <!-- Ошибка для конечной даты -->
+              <mat-error *ngIf="range.controls['end']?.hasError('matEndDateInvalid')">
+                Invalid end date
+              </mat-error>
+            </mat-form-field>
+            <button mat-raised-button color="primary" (click)="applyCustomDateFilter()">Apply</button>
+          </div>
+
         </div>
       </div>
 
@@ -51,34 +75,7 @@
     </div>
 
     <!-- Add Transaction Dialog -->
-    <ng-template #transactionDialog>
-      <h2>Add Transaction</h2>
-      <form [formGroup]="transactionForm">
-        <mat-radio-group formControlName="type">
-          <mat-radio-button value="Revenues">Revenues</mat-radio-button>
-          <mat-radio-button value="Expenses">Expenses</mat-radio-button>
-        </mat-radio-group>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Amount</mat-label>
-          <input matInput type="number" formControlName="amount" required>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Date</mat-label>
-          <input matInput [matDatepicker]="picker" formControlName="date" required>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill">
-          <mat-label>Category</mat-label>
-          <input matInput type="text" formControlName="category" required>
-        </mat-form-field>
-
-        <button mat-raised-button color="primary" (click)="addTransaction()">Add</button>
-      </form>
-    </ng-template>
+    <ng-template #transactionDialog></ng-template>
   </div>
   <app-footer></app-footer>
 </div>

@@ -1,15 +1,57 @@
-/* Стили для формы диалога */
+.dialog-container {
+  padding: 16px;
+  border-radius: 8px;
+  margin: 8px;
+}
+
 h2 {
   text-align: center;
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: bold;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 8px;
 }
 
 mat-form-field, mat-radio-group {
   width: 100%;
+}
+
+mat-label {
+  font-size: 18px;
+}
+
+.custom-button {
+  background-color: #005cbb;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 12px;
+  padding: 8px 16px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+}
+
+.custom-button:hover {
+  background-color: cornflowerblue; /* Более темный синий при наведении */
+}
+
+.radio-group {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16px;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+  margin: 8px 0;
 }

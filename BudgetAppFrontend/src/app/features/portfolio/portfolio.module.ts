@@ -7,6 +7,7 @@ import {PortfolioComponent} from './pages/portfolio/portfolio.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import {TransactionDialogComponent} from './pages/transaction-dialog/transaction-dialog.component';
+import {MatError, MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,6 @@ import {TransactionDialogComponent} from './pages/transaction-dialog/transaction
     MaterialModule,
     ComponentsModule,
     ReactiveFormsModule,
-    MatDialogModule
   ],
   exports: [
     PortfolioComponent,

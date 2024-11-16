@@ -1,7 +1,8 @@
 import {Component, TemplateRef, ViewChild} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {TransactionDialogComponent} from '../transaction-dialog/transaction-dialog.component';
+import {range} from 'rxjs';
 
 @Component({
   selector: 'app-portfolio',
@@ -11,13 +12,12 @@ import {TransactionDialogComponent} from '../transaction-dialog/transaction-dial
 export class PortfolioComponent {
   @ViewChild('transactionDialog') transactionDialog!: TemplateRef<any>;
   transactionForm: FormGroup;
+  range: FormGroup;
   transactions: any[] = [];
   originalTransactions: any[] = [];
   displayedColumns: string[] = ['type', 'amount', 'date', 'category'];
   totalCapital = 0;
   customDateFilter = false;
-  startDate: Date | null = null;
-  endDate: Date | null = null;
 
   constructor(private dialog: MatDialog, private fb: FormBuilder) {
     this.transactionForm = this.fb.group({
@@ -26,29 +26,44 @@ export class PortfolioComponent {
       date: [''],
       category: ['']
     });
+
+    this.range = this.fb.group({
+      start: [null, Validators.required],
+      end: [null, Validators.required],
+    });
   }
 
   openTransactionDialog() {
     if (this.transactionDialog) {
-      this.dialog.open(TransactionDialogComponent);
+      this.dialog.open(TransactionDialogComponent, {
+        width: '20vw',
+        maxHeight: '90vh',
+        panelClass: 'custom-dialog-container'
+      });
     }
-  }
-
-  addTransaction() {
-    const transaction = this.transactionForm.value;
-    this.transactions.push(transaction);
-    this.updateTotalCapital(transaction);
-    this.dialog.closeAll();
-    this.transactionForm.reset();
   }
 
   updateTotalCapital(transaction: any) {
     this.totalCapital += transaction.type === 'Revenues' ? +transaction.amount : -transaction.amount;
   }
 
+  applyCustomDateFilter(): void {
+    const { start, end } = this.range.value;
+    if (start && end) {
+      this.transactions = this.originalTransactions.filter(transaction => {
+        const transactionDate = new Date(transaction.date);
+        return transactionDate >= start && transactionDate <= end;
+      });
+    } else {
+      console.error('Both start and end dates must be selected');
+    }
+  }
+
   filterTransactions(event: any) {
-    const filterType = event.target.value;
+    const filterType = event.value;
     const today = new Date();
+
+    this.customDateFilter = filterType === 'custom';
 
     switch (filterType) {
       case 'day':
@@ -72,37 +87,12 @@ export class PortfolioComponent {
         );
         break;
       case 'all':
-        this.transactions = [...this.originalTransactions]; // Show all transactions
-        break;
-      case 'custom':
-        this.customDateFilter = true;
+        this.transactions = [...this.originalTransactions];
         break;
       default:
         break;
     }
   }
-
-  onStartDateChange(event: any) {
-    this.startDate = event.target.value;
-  }
-
-  onEndDateChange(event: any) {
-    this.endDate = event.target.value;
-  }
-
-  applyCustomDateFilter() {
-    if (this.startDate && this.endDate) {
-      const start = new Date(this.startDate);
-      const end = new Date(this.endDate);
-
-      this.transactions = this.originalTransactions.filter(transaction => {
-        const transactionDate = new Date(transaction.date);
-        return transactionDate >= start && transactionDate <= end;
-      });
-      this.customDateFilter = false;
-    }
-  }
-
 
   private isSameDay(date1: Date, date2: Date): boolean {
     return (
