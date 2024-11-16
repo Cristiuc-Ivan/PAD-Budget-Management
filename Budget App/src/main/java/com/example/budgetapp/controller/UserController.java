@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/api/v1/")
 public class UserController {
 
-  private final GetAllUsersUseCase getAllUsersUseCase;
+  private GetAllUsersUseCase getAllUsersUseCase;
 
   @GetMapping("/users")
   public ResponseEntity<List<User>> getAllUsers() {

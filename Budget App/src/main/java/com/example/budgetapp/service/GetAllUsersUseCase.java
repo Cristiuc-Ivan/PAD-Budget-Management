@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class GetAllUsersUseCase {
 
-  private final UserRepository userRepository;
+  private UserRepository userRepository;
 
   public List<User> findAllUsers() {
     return userRepository.findAll();
