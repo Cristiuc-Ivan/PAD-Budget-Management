@@ -1,13 +1,13 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
-import {MaterialModule} from '../../shared/material.module';
-import {ComponentsModule} from '../../shared/components/components.module';
+import {RouterModule, Routes} from '@angular/router';
 import {PortfolioComponent} from './pages/portfolio/portfolio.component';
 import {ReactiveFormsModule} from '@angular/forms';
-import {MatDialogModule} from '@angular/material/dialog';
 import {TransactionDialogComponent} from './pages/transaction-dialog/transaction-dialog.component';
-import {MatError, MatFormFieldModule} from '@angular/material/form-field';
+import {MaterialModule} from '../../../shared/material.module';
+import {ComponentsModule} from '../../../shared/components/components.module';
+
+const routes: Routes = [{ path: '', component: PortfolioComponent }];
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import {MatError, MatFormFieldModule} from '@angular/material/form-field';
   ],
   imports: [
     CommonModule,
-    RouterModule,
+    RouterModule.forChild(routes),
     MaterialModule,
     ComponentsModule,
     ReactiveFormsModule,
