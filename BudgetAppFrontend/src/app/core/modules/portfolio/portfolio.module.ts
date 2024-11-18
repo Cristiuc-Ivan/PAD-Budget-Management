@@ -6,8 +6,15 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {TransactionDialogComponent} from './pages/transaction-dialog/transaction-dialog.component';
 import {MaterialModule} from '../../../shared/material.module';
 import {ComponentsModule} from '../../../shared/components/components.module';
+import {AuthGuard} from '../../guards/auth.guard';
 
-const routes: Routes = [{ path: '', component: PortfolioComponent }];
+const routes: Routes = [
+  {
+    path: '',
+    component: PortfolioComponent,
+    canActivate: [AuthGuard], // Применение Guard
+  },
+];
 
 @NgModule({
   declarations: [

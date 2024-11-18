@@ -5,17 +5,22 @@ import { BehaviorSubject, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  private loggedIn = new BehaviorSubject<boolean>(false);
+  private isLoggedInSubject = new BehaviorSubject<boolean>(!!localStorage.getItem('authToken'));
 
-  isLoggedIn(): Observable<boolean> {
-    return this.loggedIn.asObservable();
-  }
+  isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
-  login(): void {
-    this.loggedIn.next(true);
+  login(token: string): void {
+    localStorage.setItem('authToken', token);
+    this.isLoggedInSubject.next(true);
   }
 
   logout(): void {
-    this.loggedIn.next(false);
+    localStorage.removeItem('authToken');
+    this.isLoggedInSubject.next(false);
+  }
+
+  // Новый метод для синхронной проверки
+  isLoggedInSync(): boolean {
+    return this.isLoggedInSubject.value;
   }
 }
