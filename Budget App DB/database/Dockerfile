@@ -8,4 +8,3 @@ ENV MYSQL_PASSWORD=qwerty33
 COPY budget_management.sql /docker-entrypoint-initdb.d/
 COPY grant_privileges.sql /docker-entrypoint-initdb.d/
 
-EXPOSE 3306

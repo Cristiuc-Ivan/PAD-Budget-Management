@@ -3,7 +3,7 @@ version: '3.8'
 services:
   db:
     build:
-      context: ./database
+      context: /Budget App DB/database
     image: budget_management_db
     container_name: budget_management_db
     ports:
@@ -20,7 +20,7 @@ services:
 
   app:
     build:
-      context: ../Budget App
+      context: /Budget App/
     image: budget_management_app
     container_name: budget_management_app
     ports:
