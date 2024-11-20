@@ -9,4 +9,5 @@ public class BudgetAppApplication {
     public static void main(String[] args) {
         SpringApplication.run(BudgetAppApplication.class, args);
     }
+
 }

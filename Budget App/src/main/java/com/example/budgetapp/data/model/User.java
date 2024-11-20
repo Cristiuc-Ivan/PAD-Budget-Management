@@ -1,4 +1,4 @@
-package com.example.budgetapp.model;
+package com.example.budgetapp.data.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -16,7 +16,7 @@ public class User {
     @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "second_name")
     private String lastName;
 
     @Column(name = "email")
