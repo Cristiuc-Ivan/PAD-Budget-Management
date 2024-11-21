@@ -1,32 +1,12 @@
-# 1. Используем Node.js для сборки
-FROM node:16 AS build
-
-# 2. Устанавливаем рабочую директорию
-WORKDIR /src/app
-
-# 3. Копируем файлы проекта
-COPY package*.json ./
-
-# 4. Устанавливаем зависимости
-RUN npm install
-
-# 5. Копируем весь проект
+FROM node:20 AS node
+WORKDIR /app
 COPY . .
+RUN npm install
+RUN npm run build --prod
 
-# 6. Собираем Angular-приложение
-RUN npm run build
-
-# 7. Используем NGINX для сервировки статических файлов
 FROM nginx:1.21-alpine
+COPY --from=node /app/dist/budget-app-frontend /usr/share/nginx/html
 
-# 8. Копируем собранные файлы в NGINX
-COPY --from=build /app/dist/budget-app-frontend /usr/share/nginx/html
+EXPOSE 80
 
-# 9. Настраиваем NGINX (опционально)
-COPY nginx.conf /etc/nginx/nginx.conf
 
-# 10. Открываем порт 4200
-EXPOSE 4200
-
-# 11. Запускаем NGINX
-CMD ["nginx", "-g", "daemon off;"]

@@ -36,11 +36,11 @@ services:
 
   frontend:
     build:
-      context: /Budget App Frontend/
+      context: /Budget App Frontend
     image: budget_management_frontend
     container_name: budget_management_frontend
     ports:
-      - "4200:4201"
+      - "4200:80"
 
 volumes:
   db_data:
