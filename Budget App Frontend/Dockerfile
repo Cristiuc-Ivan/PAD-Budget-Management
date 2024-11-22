@@ -1,12 +1,10 @@
-FROM node:20 AS node
-WORKDIR /app
-COPY . .
+FROM node:20 AS build
+WORKDIR /usr/src/app
+COPY package.json package-lock.json ./
 RUN npm install
-RUN npm run build --prod
+COPY . .
+RUN npm run build
 
 FROM nginx:1.21-alpine
-COPY --from=node /app/dist/budget-app-frontend /usr/share/nginx/html
-
-EXPOSE 80
-
-
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY --from=build /usr/src/app/dist/budget-app-frontend /usr/share/nginx/html

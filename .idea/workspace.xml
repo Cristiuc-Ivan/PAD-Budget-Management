@@ -7,8 +7,6 @@
     <list default="true" id="04b43e63-510b-4570-a235-def4c613fc00" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Budget App Frontend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Frontend/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Budget App Frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,6 +82,7 @@
       <workItem from="1732131494838" duration="2442000" />
       <workItem from="1732135851014" duration="4024000" />
       <workItem from="1732210149369" duration="6486000" />
+      <workItem from="1732217246636" duration="1435000" />
     </task>
     <servers />
   </component>
