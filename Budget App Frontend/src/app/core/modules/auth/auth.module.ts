@@ -5,6 +5,7 @@ import {LoginComponent} from './pages/login/login.component';
 import {RegisterComponent} from './pages/register/register.component';
 import {MaterialModule} from '../../../shared/material.module';
 import {ComponentsModule} from '../../../shared/components/components.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -27,6 +28,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule,
     ComponentsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     LoginComponent,

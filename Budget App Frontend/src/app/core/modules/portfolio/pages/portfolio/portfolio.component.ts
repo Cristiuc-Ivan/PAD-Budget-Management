@@ -5,9 +5,10 @@ import {TransactionDialogComponent} from '../transaction-dialog/transaction-dial
 import {range} from 'rxjs';
 
 @Component({
-  selector: 'app-portfolio',
-  templateUrl: './portfolio.component.html',
-  styleUrl: './portfolio.component.css'
+    selector: 'app-portfolio',
+    templateUrl: './portfolio.component.html',
+    styleUrl: './portfolio.component.css',
+    standalone: false
 })
 export class PortfolioComponent {
   @ViewChild('transactionDialog') transactionDialog!: TemplateRef<any>;

@@ -12,7 +12,7 @@ const routes: Routes = [
   {
     path: '',
     component: PortfolioComponent,
-    canActivate: [AuthGuard], // Применение Guard
+    canActivate: [AuthGuard],
   },
 ];
 

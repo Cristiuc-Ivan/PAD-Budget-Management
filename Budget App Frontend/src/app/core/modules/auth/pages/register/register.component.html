@@ -1,30 +1,51 @@
 <body>
   <div class="auth-container">
     <h2>Register</h2>
-    <form>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- First Name -->
       <mat-form-field appearance="fill">
         <mat-label>First Name</mat-label>
-        <input matInput type="text" required>
+        <input matInput formControlName="firstName" type="text" required>
+        <mat-error *ngIf="registerForm.get('firstName')?.invalid && registerForm.get('firstName')?.touched">
+          First Name is required.
+        </mat-error>
       </mat-form-field>
 
+      <!-- Second Name -->
       <mat-form-field appearance="fill">
         <mat-label>Second Name</mat-label>
-        <input matInput type="text" required>
+        <input matInput formControlName="secondName" type="text" required>
+        <mat-error *ngIf="registerForm.get('secondName')?.invalid && registerForm.get('secondName')?.touched">
+          Second Name is required.
+        </mat-error>
       </mat-form-field>
 
+      <!-- Email -->
       <mat-form-field appearance="fill">
         <mat-label>Email</mat-label>
-        <input matInput type="email" required>
+        <input matInput formControlName="email" type="email" required>
+        <mat-error *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+          A valid email is required.
+        </mat-error>
       </mat-form-field>
 
+      <!-- Password -->
       <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
-        <input matInput type="password" required>
+        <input matInput formControlName="password" type="password" required>
+        <mat-error *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+          Password is required.
+        </mat-error>
       </mat-form-field>
 
-      <button class="custom-button" type="submit">Register</button>
+      <!-- Submit Button -->
+      <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
+        Register
+      </button>
+
+      <!-- Link to Login -->
       <p>Already have an account?</p>
-      <button mat-raised-button color="primary" [routerLink]="'/login'">Log In</button>
+      <button mat-raised-button color="accent" [routerLink]="'/login'">Log In</button>
     </form>
   </div>
 </body>

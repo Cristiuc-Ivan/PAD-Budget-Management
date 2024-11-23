@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="04b43e63-510b-4570-a235-def4c613fc00" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Budget App Frontend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Frontend/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Budget App Frontend/nginx.conf" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Frontend/nginx.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +82,10 @@
       <workItem from="1732135851014" duration="4024000" />
       <workItem from="1732210149369" duration="6486000" />
       <workItem from="1732217246636" duration="1435000" />
-      <workItem from="1732293134302" duration="635000" />
+      <workItem from="1732293134302" duration="732000" />
+      <workItem from="1732310695133" duration="174000" />
+      <workItem from="1732312097546" duration="162000" />
+      <workItem from="1732346345152" duration="2709000" />
     </task>
     <servers />
   </component>

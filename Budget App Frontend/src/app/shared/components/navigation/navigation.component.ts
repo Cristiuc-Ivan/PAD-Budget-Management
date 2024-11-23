@@ -3,9 +3,10 @@ import {Observable} from 'rxjs';
 import {AuthService} from '../../../core/services/auth.service';
 
 @Component({
-  selector: 'app-navigation',
-  templateUrl: './navigation.component.html',
-  styleUrl: './navigation.component.css'
+    selector: 'app-navigation',
+    templateUrl: './navigation.component.html',
+    styleUrl: './navigation.component.css',
+    standalone: false
 })
 export class NavigationComponent implements OnInit {
   isLoggedIn$!: Observable<boolean>;

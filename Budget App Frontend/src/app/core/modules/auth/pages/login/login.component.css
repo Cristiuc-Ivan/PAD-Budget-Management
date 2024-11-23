@@ -53,6 +53,10 @@ button {
   font-size: 18px;
 }
 
+p {
+  padding-top: 10px;
+}
+
 .custom-button {
   background-color: #005cbb;
   color: white;

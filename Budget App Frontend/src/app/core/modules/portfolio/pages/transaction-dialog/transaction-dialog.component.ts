@@ -3,9 +3,10 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialogRef} from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-transaction-dialog',
-  templateUrl: './transaction-dialog.component.html',
-  styleUrl: './transaction-dialog.component.css'
+    selector: 'app-transaction-dialog',
+    templateUrl: './transaction-dialog.component.html',
+    styleUrl: './transaction-dialog.component.css',
+    standalone: false
 })
 export class TransactionDialogComponent {
   transactionForm: FormGroup;

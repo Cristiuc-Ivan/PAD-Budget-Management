@@ -1,5 +1,6 @@
 import {AppComponent} from './app.component';
 import {NgModule} from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {BrowserModule} from '@angular/platform-browser';
 import {MaterialModule} from './shared/material.module';
@@ -15,6 +16,7 @@ import {PortfolioModule} from './core/modules/portfolio/portfolio.module';
   imports: [
     AppRoutingModule,
     BrowserModule,
+    HttpClientModule,
     MaterialModule,
     HomeModule,
     FaqModule,

@@ -1,20 +1,33 @@
 <body>
-  <div class="auth-container">
-    <h2>Log In</h2>
-    <form>
-      <mat-form-field appearance="fill">
-        <mat-label>Email</mat-label>
-        <input matInput type="email" required>
-      </mat-form-field>
+<div class="auth-container">
+  <h2>Log In</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!-- Email -->
+    <mat-form-field appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="email" required>
+      <mat-error *ngIf="loginForm.controls['email']?.invalid">
+        A valid email is required.
+      </mat-error>
+    </mat-form-field>
 
-      <mat-form-field appearance="fill">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" required>
-      </mat-form-field>
+    <!-- Password -->
+    <mat-form-field appearance="fill">
+      <mat-label>Password</mat-label>
+      <input matInput formControlName="password" type="password" required>
+      <mat-error *ngIf="loginForm.controls['password']?.invalid">
+        Password is required.
+      </mat-error>
+    </mat-form-field>
 
-      <button class="custom-button" type="submit">Log In</button>
-      <p>Don't have an account?</p>
-      <button mat-raised-button color="primary" [routerLink]="'/register'">Register</button>
-    </form>
-  </div>
+    <!-- Submit Button -->
+    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+      Log In
+    </button>
+
+    <!-- Link to Register -->
+    <p>Don't have an account?</p>
+    <button mat-raised-button color="accent" [routerLink]="'/register'">Register</button>
+  </form>
+</div>
 </body>
