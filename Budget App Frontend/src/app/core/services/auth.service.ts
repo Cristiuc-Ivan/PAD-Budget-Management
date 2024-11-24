@@ -7,12 +7,13 @@ import {HttpClient} from '@angular/common/http';
 })
 export class AuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(!!localStorage.getItem('authToken'));
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://localhost:25565';
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
   constructor(private http: HttpClient) {}
 
   registerUser(user: { firstName: string; lastName: string; email: string; password: string }): Observable<any> {
+    console.log('Login URL:', this.baseUrl);
     return this.http.post(`${this.baseUrl}/user/register`, user);
   }
 
