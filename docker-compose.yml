@@ -32,7 +32,23 @@ services:
     depends_on:
       - db
     networks:
-      - budget_network  # Убедитесь, что здесь указана та же сеть
+      - budget_network
+
+  transaction:
+    build:
+      context: /Budget App Transactions
+    image: budget_management_transaction
+    container_name: budget_management_transaction
+    ports:
+      - "5050:5050"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/budget_management
+      SPRING_DATASOURCE_USERNAME: admin
+      SPRING_DATASOURCE_PASSWORD: qwerty33
+    depends_on:
+      - db
+    networks:
+      - budget_network
 
   frontend:
     build:
