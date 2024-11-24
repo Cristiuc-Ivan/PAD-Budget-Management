@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="63877dc7-d5d4-4881-99d3-dcf9efb79097" name="Changes" comment="">
+    <list default="true" id="63877dc7-d5d4-4881-99d3-dcf9efb79097" name="Changes" comment="fixed user class path">
+      <change afterPath="$PROJECT_DIR$/Budget App Registration/src/test/java/com/example/budgetapp/controller/UserControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Registration/src/test/java/com/example/budgetapp/security/JwtTokenProviderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Registration/src/test/java/com/example/budgetapp/service/AuthenticateUserUseCaseTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Registration/src/test/java/com/example/budgetapp/service/CreateNewUserUseCaseTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/service/AuthenticateUserUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/service/AuthenticateUserUseCase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/service/CreateNewUserUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/service/CreateNewUserUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/model/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,12 +25,18 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Leomir Stetiuc &lt;leomir.stetiuc@endava.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -39,40 +46,104 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Maven.budget_managment [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;Spring Boot.BudgetAppApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;leomir&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/lstetiuc/PAD-Budget-Managemen&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.AuthenticateUserUseCaseTest.executor": "Run",
+    "JUnit.CreateNewUserUseCaseTest.executor": "Run",
+    "JUnit.JwtTokenProviderTest.executor": "Run",
+    "JUnit.UserControllerTest.executor": "Run",
+    "Maven.budget_managment [clean,install].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.BudgetAppApplication.executor": "Run",
+    "git-widget-placeholder": "leomir",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/lstetiuc/PAD-Budget-Managemen",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\lstetiuc\PAD-Budget-Managemen" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.JwtTokenProviderTest">
+    <configuration name="AuthenticateUserUseCaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="budget_managment (1)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.budgetapp.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.budgetapp.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.budgetapp.service.AuthenticateUserUseCaseTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateNewUserUseCaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="budget_managment (1)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.budgetapp.service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.budgetapp.service" />
+      <option name="MAIN_CLASS_NAME" value="com.example.budgetapp.service.CreateNewUserUseCaseTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JwtTokenProviderTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="budget_managment (1)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.budgetapp.security.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.budgetapp.security" />
+      <option name="MAIN_CLASS_NAME" value="com.example.budgetapp.security.JwtTokenProviderTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="budget_managment (1)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.budgetapp.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.budgetapp.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.example.budgetapp.controller.UserControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="Budget App Frontend" />
       <method v="2">
@@ -95,6 +166,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.JwtTokenProviderTest" />
+        <item itemvalue="JUnit.CreateNewUserUseCaseTest" />
+        <item itemvalue="JUnit.AuthenticateUserUseCaseTest" />
+        <item itemvalue="JUnit.UserControllerTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -117,6 +196,15 @@
       <workItem from="1732353600577" duration="1033000" />
       <workItem from="1732354650769" duration="5338000" />
     </task>
+    <task id="LOCAL-00001" summary="fixed user class path">
+      <option name="closed" value="true" />
+      <created>1732461786816</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1732461786816</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,5 +220,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="fixed user class path" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed user class path" />
   </component>
 </project>

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JwtTokenProvider {
+
   private final Key secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 
   public String createToken(String email) {
@@ -23,5 +24,10 @@ public class JwtTokenProvider {
         .signWith(secretKey)
         .compact();
   }
+
+  public Key getSecretKey() {
+    return secretKey;
+  }
+
 }
 
