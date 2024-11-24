@@ -1,4 +1,4 @@
-package com.example.budgetapp.exception;
+package com.example.budgetapp.exception.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
