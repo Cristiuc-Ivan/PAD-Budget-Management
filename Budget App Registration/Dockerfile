@@ -1,15 +1,12 @@
-FROM openjdk:21-jdk-slim AS build
+FROM maven:3.9-openjdk-21-slim AS build
 WORKDIR /app
-COPY src ./src
+
 COPY pom.xml .
+COPY src ./src
 
-RUN apt-get update && apt-get install -y maven
-
-RUN mvn clean install && ls -l /app/target
+RUN mvn clean install -DskipTests && ls -l /app/target
 
 FROM openjdk:21-jdk-slim
-
-# Set the working directory in the container
 WORKDIR /app
 
 COPY --from=build /app/target/*.jar app.jar
