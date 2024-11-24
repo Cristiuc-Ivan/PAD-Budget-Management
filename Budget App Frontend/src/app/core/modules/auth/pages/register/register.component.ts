@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../../../services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent {
   isSubmitting = false;
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(1)]],
       lastName: ['', [Validators.required, Validators.minLength(1)]],
@@ -31,10 +32,17 @@ export class RegisterComponent {
     const user = this.registerForm.value;
 
     this.authService.registerUser(user).subscribe({
-      next: () => {
+      next: (response) => {
         alert('Registration successful!');
         this.registerForm.reset();
         this.isSubmitting = false;
+
+        // Сохранение токена (или другого признака авторизации)
+        this.authService.login(response.token);
+
+        this.router.navigate(['/portfolio']).then(() => {
+          console.log('Navigation to /portfolio was successful!');
+        });
       },
       error: (err) => {
         console.error(err);
@@ -43,4 +51,6 @@ export class RegisterComponent {
       }
     });
   }
+
+
 }

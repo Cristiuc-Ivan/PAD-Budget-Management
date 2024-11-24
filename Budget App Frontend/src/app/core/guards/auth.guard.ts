@@ -12,7 +12,11 @@ export class AuthGuard implements CanActivate {
     if (this.authService.isLoggedInSync()) {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/login']).then(() => {
+        console.log('Redirected to /login');
+      }).catch(err => {
+        console.error('Navigation error:', err);
+      });
       return false;
     }
   }

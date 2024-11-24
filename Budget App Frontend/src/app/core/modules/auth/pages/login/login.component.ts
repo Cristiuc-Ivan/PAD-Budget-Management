@@ -31,16 +31,20 @@ export class LoginComponent {
 
     this.authService.loginUser(credentials).subscribe({
       next: (response) => {
-        alert('Login successful!');
-        localStorage.setItem('token', response.token);
-        this.isSubmitting = false;
+        const token = response?.token;
+        if (token) {
+          this.authService.login(token);
+          console.log('Login successful. Token saved.');
 
-        this.router.navigate(['/portfolio']).then(() => {
-          console.log('Navigation to portfolio successful!');
-        }).catch((err) => {
-          console.error('Navigation error:', err);
-          this.errorMessage = 'An error occurred during navigation.';
-        });
+          this.router.navigate(['/portfolio']).then(() => {
+            console.log('Navigation to /portfolio was successful!');
+          }).catch((err) => {
+            console.error('Navigation error:', err);
+          });
+        } else {
+          throw new Error('Token not found in response.');
+        }
+        this.isSubmitting = false;
       },
       error: (err) => {
         console.error(err);
@@ -49,5 +53,4 @@ export class LoginComponent {
       }
     });
   }
-
 }
