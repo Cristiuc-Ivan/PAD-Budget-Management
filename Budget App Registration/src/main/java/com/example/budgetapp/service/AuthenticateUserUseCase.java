@@ -1,6 +1,6 @@
 package com.example.budgetapp.service;
 
-import com.example.budgetapp.data.model.User;
+import com.example.budgetapp.model.User;
 import com.example.budgetapp.repository.UserRepository;
 import com.example.budgetapp.security.JwtTokenProvider;
 import java.util.List;

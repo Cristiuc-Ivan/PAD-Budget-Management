@@ -1,6 +1,6 @@
 package com.example.budgetapp.repository;
 
-import com.example.budgetapp.data.model.User;
+import com.example.budgetapp.model.User;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

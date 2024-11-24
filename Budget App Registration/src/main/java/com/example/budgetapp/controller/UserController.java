@@ -1,6 +1,6 @@
 package com.example.budgetapp.controller;
 
-import com.example.budgetapp.data.model.User;
+import com.example.budgetapp.model.User;
 import com.example.budgetapp.service.AuthenticateUserUseCase;
 import com.example.budgetapp.service.CreateNewUserUseCase;
 import jakarta.validation.Valid;

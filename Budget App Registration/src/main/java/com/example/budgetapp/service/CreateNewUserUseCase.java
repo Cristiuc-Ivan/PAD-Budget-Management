@@ -1,8 +1,9 @@
 package com.example.budgetapp.service;
 
-import com.example.budgetapp.data.model.User;
+import com.example.budgetapp.model.User;
 import com.example.budgetapp.exception.exceptions.UserAlreadyExistsException;
 import com.example.budgetapp.repository.UserRepository;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -15,7 +16,7 @@ public class CreateNewUserUseCase {
   private final UserRepository userRepository;
 
   @SneakyThrows
-  public User execute(User user) {
+  public User execute(com.example.budgetapp.model.@Valid User user) {
     if (Boolean.TRUE.equals(isUserRegistered(user))) {
       throw new UserAlreadyExistsException("User already exists");
     }
