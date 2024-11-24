@@ -5,12 +5,15 @@ import com.example.budgetapp.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @Service
 public class CreateNewUserUseCase {
 
-  private final UserRepository userRepository;
+    private final UserRepository userRepository;
 
-  public void createNewUser(User user) {
-  }
+    public User execute(User user) {
+        return userRepository.save(user);
+    }
 }

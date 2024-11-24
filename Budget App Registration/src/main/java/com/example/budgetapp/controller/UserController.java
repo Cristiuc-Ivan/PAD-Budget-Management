@@ -15,19 +15,15 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/v1/")
+@RequestMapping("/user")
 public class UserController {
 
-  private final GetAllUsersUseCase getAllUsersUseCase;
-  private final CreateNewUserUseCase createNewUserUseCase;
+    private final GetAllUsersUseCase getAllUsersUseCase;
+    private final CreateNewUserUseCase createNewUserUseCase;
 
-  @GetMapping("/users")
-  public ResponseEntity<List<User>> getAllUsers() {
-    return ResponseEntity.ok(getAllUsersUseCase.findAllUsers());
-  }
-
-  @PostMapping("/users")
-  public ResponseEntity<User> createUser(@RequestBody User user) {
-    return ResponseEntity.ok().build();
-  }
+    @PostMapping("/register")
+    public ResponseEntity<User> createUser(@RequestBody User user) {
+        return ResponseEntity.ok(createNewUserUseCase
+                .execute(user));
+    }
 }
