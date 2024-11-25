@@ -13,8 +13,7 @@ services:
       MYSQL_PASSWORD: qwerty33
     volumes:
       - db_data:/var/lib/mysql
-    networks:
-      - budget_network  # Обязательно добавьте сюда
+
 
   registration:
     build:
@@ -27,8 +26,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: qwerty33
     depends_on:
       - db
-    networks:
-      - budget_network
+
 
   transaction:
     build:
@@ -41,8 +39,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: qwerty33
     depends_on:
       - db
-    networks:
-      - budget_network
+
 
   frontend:
     build:
