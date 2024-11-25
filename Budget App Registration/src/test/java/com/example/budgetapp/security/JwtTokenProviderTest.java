@@ -1,5 +1,6 @@
 package com.example.budgetapp.security;
 
+import com.example.budgetapp.model.User;
 import io.jsonwebtoken.Jwts;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -28,9 +29,14 @@ public class JwtTokenProviderTest {
 
   @Test
   void createToken_ShouldGenerateToken_WithCorrectValues() {
-    String email = "test@email.com";
+    var user = User.builder()
+        .id(0)
+        .firstName("John")
+        .lastName("Doe")
+        .email("john@doe.com")
+        .build();
 
-    String token = jwtTokenProvider.createToken(email);
+    String token = jwtTokenProvider.createToken(user);
 
     assertTrue(token != null && !token.isEmpty());
 
@@ -48,7 +54,7 @@ public class JwtTokenProviderTest {
         .getBody()
         .getExpiration();
 
-    assertEquals(extractedEmail, email);
+    assertEquals(extractedEmail, user.getEmail());
 
     assertTrue(expiration.after(new Date()));
   }

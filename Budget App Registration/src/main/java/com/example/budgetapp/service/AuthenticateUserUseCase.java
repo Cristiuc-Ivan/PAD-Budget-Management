@@ -27,6 +27,6 @@ public class AuthenticateUserUseCase {
       throw new BadCredentialsException("Invalid username or password");
     }
 
-    return jwtTokenProvider.createToken(email);
+    return jwtTokenProvider.createToken(user);
   }
 }

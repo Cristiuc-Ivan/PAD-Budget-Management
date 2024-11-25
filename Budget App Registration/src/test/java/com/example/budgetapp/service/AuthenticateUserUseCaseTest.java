@@ -49,7 +49,7 @@ public class AuthenticateUserUseCaseTest {
   @Test
   void execute_ShouldReturnToken_WhenCredentialsAreValid() {
     String email = "test@email.com";
-    String password = "password";  // Это реальный пароль
+    String password = "password";
 
     // Смокируем поведение UserRepository
     when(userRepository.findUserByEmail(email)).thenReturn(Optional.of(mockUser));
@@ -59,7 +59,7 @@ public class AuthenticateUserUseCaseTest {
 
     // Смокируем генерацию токена
     String expectedToken = "validToken";
-    when(jwtTokenProvider.createToken(email)).thenReturn(expectedToken);
+    when(jwtTokenProvider.createToken(mockUser)).thenReturn(expectedToken);
 
     // Выполнение метода
     String actualToken = authenticateUserUseCase.execute(email, password);
@@ -70,7 +70,7 @@ public class AuthenticateUserUseCaseTest {
     // Проверяем, что репозиторий был вызван один раз
     verify(userRepository, times(1)).findUserByEmail(email);
     verify(passwordEncoder, times(1)).matches(password, mockUser.getPassword());
-    verify(jwtTokenProvider, times(1)).createToken(email);
+    verify(jwtTokenProvider, times(1)).createToken(mockUser);
   }
 
   @Test
