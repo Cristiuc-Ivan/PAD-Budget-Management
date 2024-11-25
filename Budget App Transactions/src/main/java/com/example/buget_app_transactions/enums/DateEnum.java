@@ -1,6 +1,5 @@
 package com.example.buget_app_transactions.enums;
 
-<<<<<<< Updated upstream
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
@@ -30,11 +29,4 @@ public enum DateEnum {
     }
     throw new IllegalArgumentException("Unknown value: " + value);
   }
-=======
-public enum DateEnum {
-  DAY,
-  MONTH,
-  YEAR,
-  WEEK
->>>>>>> Stashed changes
 }
