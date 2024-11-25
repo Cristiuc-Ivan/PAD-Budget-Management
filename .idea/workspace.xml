@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="63877dc7-d5d4-4881-99d3-dcf9efb79097" name="Changes" comment="fixed user class path">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Budget App Frontend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Frontend/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Budget App Registration/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Registration/Dockerfile" afterDir="false" />
@@ -31,6 +32,16 @@
       <change beforePath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/security/JwtTokenValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/security/JwtTokenValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/service/GetTransactionUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/service/GetTransactionUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Budget App Transactions/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/resources/application.properties" afterDir="false" />
+>>>>>>> Stashed changes
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8a068c57-0df2-4965-a28f-478f4939e8d3/storage_v2/_src_/schema/budget_management.fVFoXg.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Frontend/src/app/core/modules/portfolio/pages/portfolio/portfolio.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Frontend/src/app/core/modules/portfolio/pages/portfolio/portfolio.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Frontend/src/app/core/modules/portfolio/pages/portfolio/portfolio.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Frontend/src/app/core/modules/portfolio/pages/portfolio/portfolio.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Frontend/src/app/core/modules/portfolio/pages/transaction-dialog/transaction-dialog.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Frontend/src/app/core/modules/portfolio/pages/transaction-dialog/transaction-dialog.component.html" afterDir="false" />
 >>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -70,6 +81,9 @@
   <component name="KubernetesApiProvider">{
   &quot;isMigrated&quot;: true
 }</component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -82,6 +96,9 @@
     <option name="showLibraryContents" value="true" />
   </component>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;HTTP Request.All in transactions.executor&quot;: &quot;Run&quot;,
@@ -96,6 +113,10 @@
     &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
     &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
     &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+<<<<<<< Updated upstream
+=======
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+>>>>>>> Stashed changes
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;Spring Boot.BudgetAppApplication.executor&quot;: &quot;Run&quot;,
     &quot;Spring Boot.BudgetAppTransactionsApplication.executor&quot;: &quot;Debug&quot;,
@@ -111,6 +132,7 @@
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+<<<<<<< Updated upstream
     &quot;ts.external.directory.path&quot;: &quot;E:\\Java Spring Project\\PAD-Budget-Management\\Budget App Frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
 =======
@@ -147,12 +169,21 @@
     "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
     "vue.rearranger.settings.migration": "true"
 >>>>>>> Stashed changes
+=======
+    &quot;ts.external.directory.path&quot;: &quot;D:\\Budget Management App\\PAD-Budget-Management\\Budget App Frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+>>>>>>> Stashed changes
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
       &quot;mysql&quot;
     ],
+<<<<<<< Updated upstream
     &quot;stardust.markdown.MarkdownSplitEditorSuppressor:keyList&quot;: []
+=======
+    &quot;stardust.markdown.MarkdownSplitEditorSuppressor:keyList&quot;: [
+    ]
+>>>>>>> Stashed changes
   }
 }</component>
   <component name="RecentsManager">
@@ -251,8 +282,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
-        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+        <option value="jdk-21.0.2-corretto-21.0.2-4caba194b151-51586f01" />
       </set>
     </attachedChunks>
   </component>
@@ -273,8 +303,13 @@
       <workItem from="1732526368284" duration="720000" />
       <workItem from="1732531916756" duration="808000" />
       <workItem from="1732534098347" duration="99000" />
+<<<<<<< Updated upstream
 =======
       <workItem from="1732518636394" duration="17275000" />
+>>>>>>> Stashed changes
+=======
+      <workItem from="1732546149606" duration="1982000" />
+      <workItem from="1732548661960" duration="2113000" />
 >>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="fixed user class path">
