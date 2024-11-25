@@ -1,5 +1,6 @@
 package com.example.buget_app_transactions.security;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
@@ -41,5 +42,16 @@ public class JwtTokenValidator {
         .getBody()
         .getSubject();
   }
+
+  public Integer getUserIdFromToken(String authToken) {
+    String token = authToken.substring(7);
+    Claims claims = Jwts.parserBuilder()
+        .setSigningKey(secretKey)
+        .build()
+        .parseClaimsJws(token)
+        .getBody();
+    return claims.get("ID", Integer.class);
+  }
+
 
 }

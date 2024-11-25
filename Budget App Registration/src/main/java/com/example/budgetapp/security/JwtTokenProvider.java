@@ -6,6 +6,7 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import java.security.Key;
 import java.util.Date;
+import java.util.UUID;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -29,7 +30,8 @@ public class JwtTokenProvider {
     Date validity = new Date(now.getTime() + validityInMilliseconds);
 
     return Jwts.builder()
-        .setId(String.valueOf(user.getId()))
+        .setId(String.valueOf(UUID.randomUUID()))
+        .claim("ID", user.getId())
         .setSubject(user.getEmail())
         .setHeaderParam("typ", "JWT")
         .setHeaderParam("Name", user.getFirstName())

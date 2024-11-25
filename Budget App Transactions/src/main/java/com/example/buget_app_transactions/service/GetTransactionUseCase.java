@@ -4,8 +4,7 @@ import com.example.buget_app_transactions.model.Transaction;
 import com.example.buget_app_transactions.repository.TransactionRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import lombok.SneakyThrows;
-import org.apache.coyote.BadRequestException;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,10 +13,8 @@ public class GetTransactionUseCase {
 
   final private TransactionRepository transactionRepository;
 
-  @SneakyThrows
-  public Optional<Transaction> execute(Integer id){
-    return Optional.ofNullable(transactionRepository.findById(id).orElseThrow(
-        () -> new BadRequestException("Transaction not found")
-    ));
+  public Optional<Transaction> execute(Integer id) throws BadCredentialsException {
+    return Optional.of(transactionRepository.findById(id)
+        .orElseThrow(() -> new BadCredentialsException("Transaction not found")));
   }
 }

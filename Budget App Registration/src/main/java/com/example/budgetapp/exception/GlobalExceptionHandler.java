@@ -37,4 +37,5 @@ public class GlobalExceptionHandler {
     response.put("error", "Invalid username or password");
     return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
   }
+
 }
