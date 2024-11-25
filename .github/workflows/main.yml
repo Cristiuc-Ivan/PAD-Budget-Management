@@ -31,5 +31,5 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t docker.io/Mrblazer/frontend:latest './Budget App Frontend'
-          docker push docker.io/Mrblazer/frontend:latest
+          docker build -t docker.io/mrblazer/frontend:latest './Budget App Frontend'
+          docker push docker.io/mrblazer/frontend:latest
