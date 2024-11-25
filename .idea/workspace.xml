@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63877dc7-d5d4-4881-99d3-dcf9efb79097" name="Changes" comment="fixed user class path">
-      <change afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/service/StringToDateEnumConverter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/enums/DateEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/enums/DateEnum.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -1,6 +1,8 @@
 FROM openjdk:21-jdk-slim AS build
 WORKDIR /app
-
+USER root
+RUN apt-get update -y && apt-get install -y iputils-ping
+USER app
 COPY pom.xml .
 COPY src ./src
 
