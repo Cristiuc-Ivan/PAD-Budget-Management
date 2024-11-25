@@ -1,0 +1,6 @@
+### AUNTHETHICATE USER FIRST
+POST localhost:25565/user/login
+
+### GET TRANSACTION WITH ID 1
+GET localhost:5050/transaction/1
+###

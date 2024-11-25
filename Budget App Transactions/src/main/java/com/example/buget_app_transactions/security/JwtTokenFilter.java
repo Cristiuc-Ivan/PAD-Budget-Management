@@ -33,13 +33,13 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
     if (token != null && jwtTokenValidator.validateToken(token)) {
       String email = jwtTokenValidator.getEmailFromToken(token);
-      System.out.println("Token is valid. User email: " + email);
+
       UsernamePasswordAuthenticationToken authentication =
           new UsernamePasswordAuthenticationToken(email, null,
               Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
       SecurityContextHolder.getContext().setAuthentication(authentication);
       Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-      System.out.println("Current authentication: " + auth);
+
 
     }
 
