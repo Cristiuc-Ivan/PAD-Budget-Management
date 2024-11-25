@@ -1,5 +1,6 @@
 FROM node:20 AS build
 WORKDIR /usr/src/app
+
 RUN apt-get update -y && apt-get install -y iputils-ping
 COPY package.json package-lock.json ./
 RUN npm ci

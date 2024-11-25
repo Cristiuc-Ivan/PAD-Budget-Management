@@ -5,9 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63877dc7-d5d4-4881-99d3-dcf9efb79097" name="Changes" comment="fixed user class path">
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Budget App Frontend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Frontend/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Budget App Registration/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Registration/Dockerfile" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/config/MapperBean.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/dto/TransactionDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/enums/DateEnum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/exception/exceptions/TransactionNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/service/CreateNewTransactionUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/service/DeleteTransactionUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/service/FilteredTransactionUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/service/GetAllUserTransactionUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/service/UpdateTransactionUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/security/JwtTokenProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Registration/src/main/java/com/example/budgetapp/security/JwtTokenProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Transactions/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/controller/TransactionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/controller/TransactionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/enums/TypeEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/enums/TypeEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/model/Transaction.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/model/Transaction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/repository/TransactionRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/repository/TransactionRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/security/JwtTokenValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/security/JwtTokenValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/service/GetTransactionUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/service/GetTransactionUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Transactions/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/resources/application.properties" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,6 +81,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< Updated upstream
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;HTTP Request.All in transactions.executor&quot;: &quot;Run&quot;,
@@ -88,6 +113,40 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
     &quot;ts.external.directory.path&quot;: &quot;E:\\Java Spring Project\\PAD-Budget-Management\\Budget App Frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "HTTP Request.All in transactions.executor": "Run",
+    "HTTP Request.transactions | AUNTHETHICATE USER FIRST.executor": "Run",
+    "HTTP Request.transactions | GET request to example server.executor": "Run",
+    "JUnit.AuthenticateUserUseCaseTest.executor": "Run",
+    "JUnit.CreateNewUserUseCaseTest.executor": "Run",
+    "JUnit.JwtTokenProviderTest.executor": "Run",
+    "JUnit.UserControllerTest.executor": "Run",
+    "Maven.budget_managment [clean,install].executor": "Run",
+    "Remote JVM Debug.Unnamed.executor": "Debug",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "Spring Boot.BudgetAppApplication.executor": "Run",
+    "Spring Boot.BudgetAppTransactionsApplication.executor": "Debug",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/lstetiuc/PAD-Budget-Managemen",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\IntelliJ IDEA 2023.2.5\\plugins\\javascript-plugin\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
+>>>>>>> Stashed changes
   },
   &quot;keyToStringList&quot;: {
     &quot;DatabaseDriversLRU&quot;: [
@@ -101,7 +160,7 @@
       <recent name="C:\Users\lstetiuc\PAD-Budget-Managemen" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.BudgetAppTransactionsApplication">
+  <component name="RunManager" selected="HTTP Request.All in transactions">
     <configuration name="All in transactions" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/Budget App Transactions/requests/transactions.http">
       <method v="2" />
     </configuration>
@@ -209,10 +268,14 @@
       <workItem from="1732353507096" duration="83000" />
       <workItem from="1732353600577" duration="1033000" />
       <workItem from="1732354650769" duration="5338000" />
+<<<<<<< Updated upstream
       <workItem from="1732518636394" duration="2597000" />
       <workItem from="1732526368284" duration="720000" />
       <workItem from="1732531916756" duration="808000" />
       <workItem from="1732534098347" duration="99000" />
+=======
+      <workItem from="1732518636394" duration="17275000" />
+>>>>>>> Stashed changes
     </task>
     <task id="LOCAL-00001" summary="fixed user class path">
       <option name="closed" value="true" />
