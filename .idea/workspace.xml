@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="63877dc7-d5d4-4881-99d3-dcf9efb79097" name="Changes" comment="fixed user class path">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/service/StringToDateEnumConverter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Budget App Frontend/src/app/shared/components/footer/footer.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Frontend/src/app/shared/components/footer/footer.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Budget App Frontend/src/app/shared/components/navigation/navigation.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Frontend/src/app/shared/components/navigation/navigation.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/enums/DateEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Transactions/src/main/java/com/example/buget_app_transactions/enums/DateEnum.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,45 +58,45 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "HTTP Request.All in transactions.executor": "Run",
-    "HTTP Request.transactions | AUNTHETHICATE USER FIRST.executor": "Run",
-    "HTTP Request.transactions | GET request to example server.executor": "Run",
-    "JUnit.AuthenticateUserUseCaseTest.executor": "Run",
-    "JUnit.CreateNewUserUseCaseTest.executor": "Run",
-    "JUnit.JwtTokenProviderTest.executor": "Run",
-    "JUnit.UserControllerTest.executor": "Run",
-    "Maven.budget_managment [clean,install].executor": "Run",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Spring Boot.BudgetAppApplication.executor": "Run",
-    "Spring Boot.BudgetAppTransactionsApplication.executor": "Debug",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "E:/Java Spring Project/PAD-Budget-Management",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "ts.external.directory.path": "E:\\Java Spring Project\\PAD-Budget-Management\\Budget App Frontend\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;HTTP Request.All in transactions.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.transactions | AUNTHETHICATE USER FIRST.executor&quot;: &quot;Run&quot;,
+    &quot;HTTP Request.transactions | GET request to example server.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthenticateUserUseCaseTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.CreateNewUserUseCaseTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.JwtTokenProviderTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.UserControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.budget_managment [clean,install].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.BudgetAppApplication.executor&quot;: &quot;Run&quot;,
+    &quot;Spring Boot.BudgetAppTransactionsApplication.executor&quot;: &quot;Debug&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/Java Spring Project/PAD-Budget-Management&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;E:\\Java Spring Project\\PAD-Budget-Management\\Budget App Frontend\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ],
-    "stardust.markdown.MarkdownSplitEditorSuppressor:keyList": []
+    &quot;stardust.markdown.MarkdownSplitEditorSuppressor:keyList&quot;: []
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\lstetiuc\PAD-Budget-Managemen" />
