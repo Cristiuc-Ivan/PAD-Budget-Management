@@ -17,7 +17,7 @@ jobs:
         with:
           compose-file: "./docker-compose.yml"
           
-      - name: Test connection between front and ytdlp
+      - name: Test connection between front and registration
         run: |
           sleep 2  # Give services time to start
           docker exec budget_management_frontend ping -c 3 budget_management_registration
