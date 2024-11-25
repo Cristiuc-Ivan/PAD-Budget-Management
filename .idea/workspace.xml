@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="63877dc7-d5d4-4881-99d3-dcf9efb79097" name="Changes" comment="fixed user class path">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Frontend/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Frontend/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Budget App Registration/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Budget App Registration/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,7 +33,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="leomir" />
+        <entry key="$PROJECT_DIR$" value="6191064e4d82cc1325b88b2a4f6cf7fd3625825c" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -179,11 +181,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="HTTP Request.transactions | AUNTHETHICATE USER FIRST" />
-        <item itemvalue="HTTP Request.All in transactions" />
-        <item itemvalue="HTTP Request.transactions | GET request to example server" />
         <item itemvalue="JUnit.UserControllerTest" />
         <item itemvalue="JUnit.JwtTokenProviderTest" />
+        <item itemvalue="HTTP Request.transactions | GET request to example server" />
+        <item itemvalue="HTTP Request.transactions | AUNTHETHICATE USER FIRST" />
+        <item itemvalue="HTTP Request.All in transactions" />
       </list>
     </recent_temporary>
   </component>
