@@ -19,8 +19,9 @@ jobs:
           
       - name: Test connection between front and registration
         run: |
+          docker ps
           sleep 2  # Give services time to start
-          docker exec frontend-1 ping -c 3 registration-1
+          docker exec  pad-budget-managemen-frontend-1 ping -c 3 pad-budget-managemen-registration-1
           
       - name: Login to Docker Hub
         uses: docker/login-action@v3
