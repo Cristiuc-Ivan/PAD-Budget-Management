@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,6 +10,22 @@ export class TransactionService {
 
   constructor(private http: HttpClient) {}
 
+  // Utility method to get auth token from localStorage
+  private getAuthToken(): string | null {
+    return localStorage.getItem('authToken');
+  }
+
+  // Utility method to create headers with the auth token
+  private createAuthHeaders(): HttpHeaders {
+    const token = this.getAuthToken();
+    if (!token) {
+      throw new Error('Authorization token is missing');
+    }
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+  }
+
   // POST /transaction
   addTransactionService(transaction: {
     type: string;
@@ -17,22 +33,27 @@ export class TransactionService {
     date: string;
     category: string;
   }): Observable<any> {
-    return this.http.post(`${this.baseUrl}/transaction`, transaction);
+    const headers = this.createAuthHeaders();
+    return this.http.post(`${this.baseUrl}/transaction`, transaction, { headers });
   }
 
   // GET /user/transactions
   getAllTransactionsService(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/user/transactions`);
+    const headers = this.createAuthHeaders();
+    return this.http.get<any[]>(`${this.baseUrl}/user/transactions`, { headers });
   }
 
   // GET /transaction/:id
   getTransactionByIdService(id: number): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/transaction/${id}`);
+    const headers = this.createAuthHeaders();
+    return this.http.get<any>(`${this.baseUrl}/transaction/${id}`, { headers });
   }
 
   // GET /transactions?filter={filterType}
   filterTransactionsByTypeService(filterType: string): Observable<any[]> {
+    const headers = this.createAuthHeaders();
     return this.http.get<any[]>(`${this.baseUrl}/transactions`, {
+      headers,
       params: new HttpParams().set('filter', filterType),
     });
   }
@@ -42,7 +63,9 @@ export class TransactionService {
     startDate: string,
     endDate: string
   ): Observable<any[]> {
+    const headers = this.createAuthHeaders();
     return this.http.get<any[]>(`${this.baseUrl}/transactions`, {
+      headers,
       params: new HttpParams()
         .set('filter', 'custom')
         .set('startDate', startDate)
@@ -60,12 +83,14 @@ export class TransactionService {
       category: string;
     }
   ): Observable<any> {
-    return this.http.put(`${this.baseUrl}/transaction/${id}`, updatedTransaction);
+    const headers = this.createAuthHeaders();
+    return this.http.put(`${this.baseUrl}/transaction/${id}`, updatedTransaction, { headers });
   }
 
   // DELETE /transaction/:id
   deleteTransactionService(id: number): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/transaction/${id}`);
+    const headers = this.createAuthHeaders();
+    return this.http.delete(`${this.baseUrl}/transaction/${id}`, { headers });
   }
 }
 

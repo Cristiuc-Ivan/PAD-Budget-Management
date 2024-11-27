@@ -33,7 +33,7 @@ export class LoginComponent {
       next: (response) => {
         const token = response?.token;
         if (token) {
-          this.authService.login(token);
+          this.authService.loginUser(token);
           console.log('Login successful. Token saved.');
 
           this.router.navigate(['/portfolio']).then(() => {

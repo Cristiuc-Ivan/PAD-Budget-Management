@@ -38,7 +38,7 @@ export class RegisterComponent {
         this.isSubmitting = false;
 
         // Сохранение токена (или другого признака авторизации)
-        this.authService.login(response.token);
+        this.authService.loginUser(response.token);
 
         this.router.navigate(['/portfolio']).then(() => {
           console.log('Navigation to /portfolio was successful!');

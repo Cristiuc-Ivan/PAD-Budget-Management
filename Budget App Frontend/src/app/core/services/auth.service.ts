@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import {HttpClient} from '@angular/common/http';
+import {BehaviorSubject, Observable, tap} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private isLoggedInSubject = new BehaviorSubject<boolean>(!!localStorage.getItem('authToken'));
@@ -12,26 +12,46 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
+  // Регистрация пользователя
   registerUser(user: { firstName: string; lastName: string; email: string; password: string }): Observable<any> {
-    console.log('Login URL:', this.baseUrl);
-    return this.http.post(`${this.baseUrl}/user/register`, user);
+    return this.http.post<{ token: string }>(`${this.baseUrl}/user/register`, user).pipe(
+      tap((response) => {
+        this.saveToken(response.token); // Сохранить токен после успешной регистрации
+      })
+    );
   }
 
+  // Авторизация пользователя
   loginUser(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post(`${this.baseUrl}/user/login`, credentials);
+    return this.http.post<{ token: string }>(`${this.baseUrl}/user/login`, credentials).pipe(
+      tap((response) => {
+        this.saveToken(response.token); // Сохранить токен после успешного входа
+      })
+    );
   }
 
-  login(token: string): void {
+  // Сохранение токена и обновление статуса авторизации
+  private saveToken(token: string): void {
     localStorage.setItem('authToken', token);
     this.isLoggedInSubject.next(true);
   }
 
+  // Выход пользователя
   logout(): void {
     localStorage.removeItem('authToken');
     this.isLoggedInSubject.next(false);
   }
 
+  // Синхронная проверка статуса авторизации
   isLoggedInSync(): boolean {
     return this.isLoggedInSubject.value;
+  }
+
+  // Получение заголовков с токеном для использования в других сервисах
+  getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('authToken');
+    return new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
   }
 }
