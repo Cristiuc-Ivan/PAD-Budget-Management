@@ -67,24 +67,30 @@ export class PortfolioComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.addTransaction(result);
+        this.addTransaction(result); // Добавляем транзакцию в основной список
       }
     });
   }
 
   // Добавление новой транзакции
-  addTransaction(transaction: any): void {
+  addTransaction(transaction: { type: string; amount: number; date: string; category: string }): void {
+    if (!transaction || !transaction.type || !transaction.amount || !transaction.date || !transaction.category) {
+      console.error('Invalid transaction data, cannot proceed.');
+      return;
+    }
+
     this.transactionService.addTransactionService(transaction).subscribe({
       next: (newTransaction) => {
         this.transactions.push(newTransaction);
         this.originalTransactions.push(newTransaction);
-        this.updateTotalCapital(newTransaction);
+        this.updateTotalCapital(newTransaction); // Обновляем капитал
       },
       error: (err) => {
         console.error('Error adding transaction:', err);
       },
     });
   }
+
 
   filterTransactions(event: any): void {
     const filterType = event.value;

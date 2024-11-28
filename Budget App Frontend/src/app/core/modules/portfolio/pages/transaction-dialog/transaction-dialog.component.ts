@@ -29,10 +29,20 @@ export class TransactionDialogComponent {
   }
 
   // Метод для добавления транзакции
-  addTransaction(transaction: any): void {
+  addTransaction(transaction: {
+    type: string;
+    amount: number;
+    date: string;
+    category: string;
+  }): void {
     this.transactionService.addTransactionService(transaction).subscribe({
       next: (newTransaction) => {
+        console.log('Transaction added successfully:', newTransaction);
+
+        // Добавляем транзакцию в текущий список
         this.transactions.push(newTransaction);
+
+        // Обновляем исходный массив транзакций, если он используется для фильтрации/отмены изменений
         this.originalTransactions.push(newTransaction);
       },
       error: (err) => {

@@ -6,7 +6,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
   providedIn: 'root',
 })
 export class AuthService {
-  private isLoggedInSubject = new BehaviorSubject<boolean>(!!localStorage.getItem('authToken'));
+  private isLoggedInSubject = new BehaviorSubject<boolean>(!!localStorage.getItem('token'));
   private baseUrl = 'http://localhost:25565';
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
 
@@ -32,13 +32,13 @@ export class AuthService {
 
   // Сохранение токена и обновление статуса авторизации
   private saveToken(token: string): void {
-    localStorage.setItem('authToken', token);
+    localStorage.setItem('token', token);
     this.isLoggedInSubject.next(true);
   }
 
   // Выход пользователя
   logout(): void {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem('token');
     this.isLoggedInSubject.next(false);
   }
 
@@ -49,7 +49,7 @@ export class AuthService {
 
   // Получение заголовков с токеном для использования в других сервисах
   getAuthHeaders(): HttpHeaders {
-    const token = localStorage.getItem('authToken');
+    const token = localStorage.getItem('token');
     return new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });
