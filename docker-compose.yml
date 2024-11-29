@@ -1,51 +1,50 @@
-version: '3.8'
+version: "3.8"
 
 services:
-  db:
-    build:
-      './Budget App DB/database'
-    ports:
-      - "3307:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: budget_management
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: qwerty33
-    volumes:
-      - db_data:/var/lib/mysql
+    db:
+        build: "./Budget App DB/database"
+        ports:
+            - "3307:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: budget_management
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: qwerty33
+        volumes:
+            - db_data:/var/lib/mysql
+        healthcheck:
+            test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+            timeout: 5s
+            retries: 10
 
+    registration:
+        build: "./Budget App Registration"
+        ports:
+            - "25565:25565"
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/budget_management
+            SPRING_DATASOURCE_USERNAME: admin
+            SPRING_DATASOURCE_PASSWORD: qwerty33
+        depends_on:
+            db:
+                condition: service_healthy
 
-  registration:
-    build:
-      './Budget App Registration'
-    ports:
-      - "25565:25565"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/budget_management
-      SPRING_DATASOURCE_USERNAME: admin
-      SPRING_DATASOURCE_PASSWORD: qwerty33
-    depends_on:
-      - db
+    transaction:
+        build: "./Budget App Transactions"
+        ports:
+            - "5050:5050"
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/budget_management?allowPublicKeyRetrieval=true&useSSL=false
+            SPRING_DATASOURCE_USERNAME: admin
+            SPRING_DATASOURCE_PASSWORD: qwerty33
+        depends_on:
+            db:
+                condition: service_healthy
 
-
-  transaction:
-    build:
-      './Budget App Transactions'
-    ports:
-      - "5050:5050"
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/budget_management
-      SPRING_DATASOURCE_USERNAME: admin
-      SPRING_DATASOURCE_PASSWORD: qwerty33
-    depends_on:
-      - db
-
-
-  frontend:
-    build:
-      './Budget App Frontend'
-    ports:
-      - "3000:80"
+    frontend:
+        build: "./Budget App Frontend"
+        ports:
+            - "3000:80"
 
 volumes:
-  db_data:
+    db_data:
