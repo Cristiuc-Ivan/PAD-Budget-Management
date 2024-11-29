@@ -28,9 +28,9 @@ export class TransactionService {
   // GET /user/transactions
   getAllTransactionsService(): Observable<any[]> {
     const headers = this.authService.getAuthHeaders();
-    console.log('Sending GET request to:', `${this.baseUrl}/user/transactions`);
+    console.log('Sending GET request to:', `${this.baseUrl}transaction/user`);
     console.log('Headers:', headers);
-    return this.http.get<any[]>(`${this.baseUrl}/user/transactions`, { headers });
+    return this.http.get<any[]>(`${this.baseUrl}/transaction/user`, { headers });
   }
 
   // GET /transaction/:id
