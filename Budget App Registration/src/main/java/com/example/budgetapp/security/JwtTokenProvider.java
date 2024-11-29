@@ -7,6 +7,7 @@ import jakarta.annotation.PostConstruct;
 import java.security.Key;
 import java.util.Date;
 import java.util.UUID;
+import java.util.Collections;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -36,7 +37,7 @@ public class JwtTokenProvider {
         .setHeaderParam("typ", "JWT")
         .setHeaderParam("Name", user.getFirstName())
         .setHeaderParam("Surname", user.getLastName())
-        .claim("roles", "ROLE_USER")
+        .claim("roles", Collections.singletonList("ROLE_USER"))
         .setIssuedAt(now)
         .setExpiration(validity)
         .signWith(secretKey)

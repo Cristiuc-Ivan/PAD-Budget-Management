@@ -14,6 +14,7 @@ import java.util.Collections;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import com.example.buget_app_transactions.security.JwtTokenValidator;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -40,6 +41,7 @@ public class TransactionController {
   private final GetAllUserTransactionUseCase getAllUserTransactionUseCase;
   private final DeleteTransactionUseCase deleteTransactionUseCase;
   private final UpdateTransactionUseCase updateTransactionUseCase;
+  private final JwtTokenValidator jwtTokenValidator;
   private final FilteredTransactionUseCase filteredTransactionUseCase;
 
   @GetMapping(value = "/{id}")
@@ -57,6 +59,13 @@ public class TransactionController {
   @GetMapping("/user/{id}")
   public ResponseEntity<List<Transaction>> getAllTransactions(@PathVariable int id) {
     return ResponseEntity.ok(getAllUserTransactionUseCase.execute(id));
+  }
+
+  @GetMapping("/user")
+  public ResponseEntity<List<Transaction>> getAllUserTransactions(
+      @RequestHeader("Authorization") String authorizationHeader) {
+      Integer userId = jwtTokenValidator.getUserIdFromToken(authorizationHeader);
+      return ResponseEntity.ok(getAllUserTransactionUseCase.execute(userId));
   }
 
   @DeleteMapping("/{id}")

@@ -4,27 +4,30 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 public enum TypeEnum {
-  EXPENSE("Expense"),
-  INCOME("Income");
+  EXPENSE("Expense", "Expenses"),
+  INCOME("Income", "Incomes"),
+  REVENUE("Revenue", "Revenues");
 
   private final String value;
+  private final String pluralValue;
 
-  TypeEnum(String value) {
-    this.value = value;
+  TypeEnum(String value, String pluralValue) {
+      this.value = value;
+      this.pluralValue = pluralValue;
   }
 
   @JsonValue
   public String getValue() {
-    return value;
+      return value;
   }
 
   @JsonCreator
   public static TypeEnum fromValue(String value) {
-    for (TypeEnum type : TypeEnum.values()) {
-      if (type.value.equalsIgnoreCase(value)) {
-        return type;
+      for (TypeEnum type : TypeEnum.values()) {
+          if (type.value.equalsIgnoreCase(value) || type.pluralValue.equalsIgnoreCase(value)) {
+              return type;
+          }
       }
-    }
-    throw new IllegalArgumentException("Unknown value: " + value);
+      throw new IllegalArgumentException("Unknown value: " + value);
   }
 }

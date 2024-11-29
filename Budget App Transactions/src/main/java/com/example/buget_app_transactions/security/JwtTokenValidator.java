@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.security.Key;
+import java.util.List;
 
 @Component
 public class JwtTokenValidator {
@@ -53,5 +54,14 @@ public class JwtTokenValidator {
     return claims.get("ID", Integer.class);
   }
 
+  public List<String> getRolesFromToken(String token) {
+    Claims claims = Jwts.parserBuilder()
+        .setSigningKey(secretKey)
+        .build()
+        .parseClaimsJws(token)
+        .getBody();
+        
+    return claims.get("roles", List.class);
+}
 
 }
