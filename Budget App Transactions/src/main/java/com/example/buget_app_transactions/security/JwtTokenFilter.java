@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.util.Collections;
 import java.util.List;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -18,7 +19,6 @@ import java.io.IOException;
 
 @Component
 public class JwtTokenFilter extends OncePerRequestFilter {
-
   private final JwtTokenValidator jwtTokenValidator;
 
   public JwtTokenFilter(JwtTokenValidator jwtTokenValidator) {
@@ -27,22 +27,30 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,
-      FilterChain filterChain)
-      throws ServletException, IOException {
-    String token = getTokenFromRequest(request);
-
-    if (token != null && jwtTokenValidator.validateToken(token)) {
-      String email = jwtTokenValidator.getEmailFromToken(token);
-
-      UsernamePasswordAuthenticationToken authentication =
-          new UsernamePasswordAuthenticationToken(email, null,
-              Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
-      SecurityContextHolder.getContext().setAuthentication(authentication);
-      Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-
-
+                  FilterChain filterChain) throws ServletException, IOException {
+    try {
+      String token = getTokenFromRequest(request);
+      
+      if (token != null && jwtTokenValidator.validateToken(token)) {
+        String email = jwtTokenValidator.getEmailFromToken(token);
+        
+        // Create authorities
+        List<GrantedAuthority> authorities = Collections.singletonList(
+          new SimpleGrantedAuthority("ROLE_USER")
+        );
+        
+        // Create authentication token with proper authorities
+        UsernamePasswordAuthenticationToken authentication =
+          new UsernamePasswordAuthenticationToken(email, null, authorities);
+          
+        authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+        
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+      }
+    } catch (Exception e) {
+      // Handle exception
     }
-
+    
     filterChain.doFilter(request, response);
   }
 
