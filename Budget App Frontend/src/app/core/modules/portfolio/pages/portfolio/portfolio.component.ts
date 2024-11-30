@@ -1,4 +1,4 @@
-import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {TransactionDialogComponent} from '../transaction-dialog/transaction-dialog.component';
@@ -24,7 +24,7 @@ export class PortfolioComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private fb: FormBuilder,
-    private transactionService: TransactionService
+    private transactionService: TransactionService,
   ) {
     this.transactionForm = this.fb.group({
       type: [''],
@@ -40,21 +40,20 @@ export class PortfolioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadTransactions();
-  }
-
-  // Загрузка всех транзакций
-  loadTransactions(): void {
-    this.transactionService.getAllTransactionsService().subscribe({
+    // Подписка на изменения данных
+    this.transactionService.transactions$.subscribe({
       next: (transactions) => {
         this.transactions = transactions;
         this.originalTransactions = transactions;
         this.calculateTotalCapital();
       },
       error: (err) => {
-        console.error('Error loading transactions:', err);
+        console.error('Error fetching transactions:', err);
       },
     });
+
+    // Загрузка данных при инициализации
+    this.transactionService.loadTransactions();
   }
 
   // Открытие диалога добавления транзакции
@@ -74,7 +73,7 @@ export class PortfolioComponent implements OnInit {
 
   // Добавление новой транзакции
   addTransaction(transaction: { type: string; amount: number; date: string; category: string }): void {
-    if (!transaction || !transaction.type || !transaction.amount || !transaction.date || !transaction.category) {
+    if (!transaction.type || !transaction.amount || !transaction.date || !transaction.category) {
       console.error('Invalid transaction data, cannot proceed.');
       return;
     }
@@ -129,7 +128,8 @@ export class PortfolioComponent implements OnInit {
   // Расчет общего капитала при загрузке
   calculateTotalCapital(): void {
     this.totalCapital = this.transactions.reduce((acc, transaction) => {
-      return acc + (transaction.type === 'Revenues' ? +transaction.amount : -transaction.amount);
+      // Проверяем тип транзакции и корректно обновляем капитал
+      return acc + (transaction.type === 'Revenue' ? +transaction.amount : -transaction.amount);
     }, 0);
   }
 
@@ -166,14 +166,14 @@ export class PortfolioComponent implements OnInit {
   deleteTransaction(transactionId: number): void {
     this.transactionService.deleteTransactionService(transactionId).subscribe({
       next: () => {
-        // Удаляем транзакцию из локальных данных
-        this.originalTransactions = this.originalTransactions.filter(t => t.id !== transactionId);
-        this.transactions = [...this.originalTransactions];
-        this.calculateTotalCapital(); // Пересчитываем капитал
+        console.log(`Transaction with ID ${transactionId} deleted successfully`);
+        // Перезагружаем страницу
+        window.location.reload();
       },
       error: (err) => {
         console.error('Failed to delete transaction:', err);
-      }
+        window.location.reload();
+      },
     });
   }
 }

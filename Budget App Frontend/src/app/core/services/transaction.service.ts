@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {BehaviorSubject, catchError, map, Observable, tap, throwError} from 'rxjs';
 import {AuthService} from './auth.service';
 
 @Injectable({
@@ -8,8 +8,23 @@ import {AuthService} from './auth.service';
 })
 export class TransactionService {
   private baseUrl = 'http://localhost:5050';
+  private transactionsSubject = new BehaviorSubject<any[]>([]); // Хранение актуальных данных
+  transactions$ = this.transactionsSubject.asObservable(); // Подписка на изменения
 
   constructor(private http: HttpClient, private authService: AuthService) {}
+
+  // Загрузка транзакций и обновление BehaviorSubject
+  loadTransactions(): void {
+    const headers = this.authService.getAuthHeaders();
+    this.http.get<any[]>(`${this.baseUrl}/transaction/user`, { headers }).subscribe({
+      next: (transactions) => {
+        this.transactionsSubject.next(transactions); // Обновляем данные
+      },
+      error: (err) => {
+        console.error('Error loading transactions:', err);
+      },
+    });
+  }
 
   // POST /transaction
   addTransactionService(transaction: {
@@ -19,17 +34,14 @@ export class TransactionService {
     category: string;
   }): Observable<any> {
     const headers = this.authService.getAuthHeaders();
-    console.log('Sending POST request to:', `${this.baseUrl}/transaction`);
-    console.log('Payload:', transaction);
-    console.log('Headers:', headers);
-    return this.http.post(`${this.baseUrl}/transaction`, transaction, { headers });
+    return this.http.post(`${this.baseUrl}/transaction`, transaction, { headers }).pipe(
+      tap(() => this.loadTransactions()) // Обновляем данные после добавления
+    );
   }
 
   // GET /user/transactions
   getAllTransactionsService(): Observable<any[]> {
     const headers = this.authService.getAuthHeaders();
-    console.log('Sending GET request to:', `${this.baseUrl}transaction/user`);
-    console.log('Headers:', headers);
     return this.http.get<any[]>(`${this.baseUrl}/transaction/user`, { headers });
   }
 
@@ -89,7 +101,18 @@ export class TransactionService {
     const headers = this.authService.getAuthHeaders();
     console.log('Sending DELETE request to:', `${this.baseUrl}/transaction/${id}`);
     console.log('Headers:', headers);
-    return this.http.delete(`${this.baseUrl}/transaction/${id}`, { headers });
+    return this.http.delete(`${this.baseUrl}/transaction/${id}`, { headers, observe: 'response' }).pipe(
+      map((response) => {
+        if (response.status === 204 || response.status === 200) {
+          return true;
+        }
+        throw new Error(`Unexpected status code: ${response.status}`);
+      }),
+      catchError((error) => {
+        console.error('Error deleting transaction:', error);
+        return throwError(error);
+      })
+    );
   }
 }
 

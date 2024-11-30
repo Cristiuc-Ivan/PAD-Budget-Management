@@ -44,6 +44,7 @@ export class TransactionDialogComponent {
 
         // Обновляем исходный массив транзакций, если он используется для фильтрации/отмены изменений
         this.originalTransactions.push(newTransaction);
+        this.dialogRef.close(true);
       },
       error: (err) => {
         console.error('Error adding transaction:', err);
