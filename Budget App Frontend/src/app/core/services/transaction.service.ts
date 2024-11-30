@@ -14,7 +14,8 @@ export class TransactionService {
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   // Загрузка транзакций и обновление BehaviorSubject
-  loadTransactions(): void {
+  // GET /user/transactions
+  getAllTransactionsService(): void {
     const headers = this.authService.getAuthHeaders();
     this.http.get<any[]>(`${this.baseUrl}/transaction/user`, { headers }).subscribe({
       next: (transactions) => {
@@ -35,15 +36,10 @@ export class TransactionService {
   }): Observable<any> {
     const headers = this.authService.getAuthHeaders();
     return this.http.post(`${this.baseUrl}/transaction`, transaction, { headers }).pipe(
-      tap(() => this.loadTransactions()) // Обновляем данные после добавления
+      tap(() => this.getAllTransactionsService()) // Обновляем данные после добавления
     );
   }
 
-  // GET /user/transactions
-  getAllTransactionsService(): Observable<any[]> {
-    const headers = this.authService.getAuthHeaders();
-    return this.http.get<any[]>(`${this.baseUrl}/transaction/user`, { headers });
-  }
 
   // GET /transaction/:id
   getTransactionByIdService(id: number): Observable<any> {
@@ -82,18 +78,12 @@ export class TransactionService {
   // PUT /transaction/:id
   updateTransactionService(
     id: number,
-    updatedTransaction: {
-      type: string;
-      amount: number;
-      date: string;
-      category: string;
-    }
+    updatedTransaction: any
   ): Observable<any> {
     const headers = this.authService.getAuthHeaders();
-    console.log('Sending PUT request to:', `${this.baseUrl}/transaction/${id}`);
-    console.log('Payload:', updatedTransaction);
-    console.log('Headers:', headers);
-    return this.http.put(`${this.baseUrl}/transaction/${id}`, updatedTransaction, { headers });
+    return this.http.put(`${this.baseUrl}/transaction/${id}`, updatedTransaction, { headers }).pipe(
+      tap(() => this.getAllTransactionsService()) // Обновляем данные после добавления
+    );
   }
 
   // DELETE /transaction/:id

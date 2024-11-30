@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatDialog} from '@angular/material/dialog';
 import {TransactionDialogComponent} from '../transaction-dialog/transaction-dialog.component';
 import {TransactionService} from '../../../../services/transaction.service';
+import {TransactionEditDialogComponent} from '../transaction-edit-dialog/transaction-edit-dialog.component';
 
 @Component({
   selector: 'app-portfolio',
@@ -20,6 +21,7 @@ export class PortfolioComponent implements OnInit {
   displayedColumns: string[] = ['type', 'amount', 'date', 'category', 'actions'];
   totalCapital = 0;
   customDateFilter = false;
+  selectedTransaction: any | null = null;
 
   constructor(
     private dialog: MatDialog,
@@ -53,7 +55,7 @@ export class PortfolioComponent implements OnInit {
     });
 
     // Загрузка данных при инициализации
-    this.transactionService.loadTransactions();
+    this.transactionService.getAllTransactionsService();
   }
 
   // Открытие диалога добавления транзакции
@@ -146,22 +148,52 @@ export class PortfolioComponent implements OnInit {
     }
   }
 
-  updateTransaction(transaction: any): void {
-    this.transactionService.updateTransactionService(transaction.id, transaction).subscribe({
-      next: (updatedTransaction) => {
-        // Обновляем локальные данные
-        const index = this.originalTransactions.findIndex(t => t.id === transaction.id);
-        if (index > -1) {
-          this.originalTransactions[index] = updatedTransaction;
-          this.transactions = [...this.originalTransactions];
-          this.calculateTotalCapital(); // Пересчитываем капитал
+  // Открытие формы редактирования транзакции
+  openEditDialog(transaction: any): void {
+    if (!transaction) {
+      console.error('No transaction selected for updating.');
+      return;
+    }
+
+    const dialogRef = this.dialog.open(TransactionEditDialogComponent, {
+      width: '20vw',
+      maxHeight: '90vh',
+      panelClass: 'custom-dialog-container',
+      data: { transaction }, // Передаём данные транзакции в диалог
+    });
+
+    dialogRef.afterClosed().subscribe((updatedTransaction) => {
+      if (updatedTransaction) {
+        this.updateTransaction({ ...transaction, ...updatedTransaction });
+      } else {
+        console.log('Edit dialog was closed without saving changes.');
+      }
+    });
+  }
+
+  updateTransaction(updatedTransaction: any): void {
+    if (!updatedTransaction || !updatedTransaction.id) {
+      console.error('No transaction selected for updating.');
+      return;
+    }
+
+    this.transactionService.updateTransactionService(updatedTransaction.id, updatedTransaction).subscribe({
+      next: (response) => {
+        // Обновляем локальный список транзакций
+        const index = this.transactions.findIndex(t => t.id === updatedTransaction.id);
+        if (index !== -1) {
+          this.transactions[index] = response;
+          this.calculateTotalCapital(); // Пересчёт капитала
+        } else {
+          console.warn('Updated transaction not found in local list.');
         }
       },
       error: (err) => {
         console.error('Failed to update transaction:', err);
-      }
+      },
     });
   }
+
 
   deleteTransaction(transactionId: number): void {
     this.transactionService.deleteTransactionService(transactionId).subscribe({

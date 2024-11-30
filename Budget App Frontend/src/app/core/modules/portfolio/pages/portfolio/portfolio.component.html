@@ -81,7 +81,7 @@
           <th mat-header-cell *matHeaderCellDef>Actions</th>
           <td mat-cell *matCellDef="let transaction">
             <!-- Update Button -->
-            <button mat-icon-button color="primary" (click)="updateTransaction(transaction)">
+            <button mat-icon-button (click)="openEditDialog(transaction)">
               <mat-icon>edit</mat-icon>
             </button>
             <!-- Delete Button -->

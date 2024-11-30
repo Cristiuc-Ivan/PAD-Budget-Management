@@ -7,6 +7,7 @@ import {TransactionDialogComponent} from './pages/transaction-dialog/transaction
 import {MaterialModule} from '../../../shared/material.module';
 import {ComponentsModule} from '../../../shared/components/components.module';
 import {AuthGuard} from '../../guards/auth.guard';
+import {TransactionEditDialogComponent} from './pages/transaction-edit-dialog/transaction-edit-dialog.component';
 
 const routes: Routes = [
   {
@@ -19,7 +20,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     PortfolioComponent,
-    TransactionDialogComponent
+    TransactionDialogComponent,
+    TransactionEditDialogComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ const routes: Routes = [
   ],
   exports: [
     PortfolioComponent,
-    TransactionDialogComponent
+    TransactionDialogComponent,
+    TransactionEditDialogComponent
   ]
 })
 export class PortfolioModule { }
