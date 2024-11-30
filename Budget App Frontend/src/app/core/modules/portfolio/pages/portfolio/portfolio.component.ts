@@ -21,7 +21,6 @@ export class PortfolioComponent implements OnInit {
   displayedColumns: string[] = ['type', 'amount', 'date', 'category', 'actions'];
   totalCapital = 0;
   customDateFilter = false;
-  selectedTransaction: any | null = null;
 
   constructor(
     private dialog: MatDialog,
@@ -98,6 +97,10 @@ export class PortfolioComponent implements OnInit {
 
     if (filterType === 'custom') {
       const { start, end } = this.range.value;
+
+      // Включение фильтрации по пользовательским датам
+      this.customDateFilter = filterType === 'custom';
+
       this.transactionService
         .filterTransactionsByCustomDateService(start, end)
         .subscribe({
