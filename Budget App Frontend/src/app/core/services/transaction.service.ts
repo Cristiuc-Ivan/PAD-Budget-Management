@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {BehaviorSubject, catchError, map, Observable, tap, throwError} from 'rxjs';
 import {AuthService} from './auth.service';
+import {CurrencyService} from './currency.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,11 @@ export class TransactionService {
   private transactionsSubject = new BehaviorSubject<any[]>([]); // Хранение актуальных данных
   transactions$ = this.transactionsSubject.asObservable(); // Подписка на изменения
 
-  constructor(private http: HttpClient, private authService: AuthService) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private currencyService: CurrencyService
+  ) {}
 
   // Загрузка транзакций и обновление BehaviorSubject
   // GET /user/transactions

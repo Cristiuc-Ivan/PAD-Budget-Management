@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import {TransactionDialogComponent} from '../transaction-dialog/transaction-dialog.component';
 import {TransactionService} from '../../../../services/transaction.service';
 import {TransactionEditDialogComponent} from '../transaction-edit-dialog/transaction-edit-dialog.component';
+import {CurrencyService} from '../../../../services/currency.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -18,14 +19,18 @@ export class PortfolioComponent implements OnInit {
   range: FormGroup;
   transactions: any[] = [];
   originalTransactions: any[] = [];
+  // displayedColumns: string[] = ['type', 'amountMDL', 'amountUSD', 'amountEUR', 'date', 'category', 'actions'];
   displayedColumns: string[] = ['type', 'amount', 'date', 'category', 'actions'];
+
   totalCapital = 0;
-  customDateFilter = false;
+  currentFilterType: string = 'all';
+  currencyRates: { [key: string]: number } = {};
 
   constructor(
     private dialog: MatDialog,
     private fb: FormBuilder,
     private transactionService: TransactionService,
+    private currencyService: CurrencyService
   ) {
     this.transactionForm = this.fb.group({
       type: [''],
@@ -41,7 +46,15 @@ export class PortfolioComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Подписка на изменения данных
+    // this.currencyService.getCurrencyRates().subscribe({
+    //   next: (rates) => {
+    //     this.currencyRates = rates;
+    //   },
+    //   error: (err) => {
+    //     console.error('Error loading currency rates:', err);
+    //   },
+    // });
+
     this.transactionService.transactions$.subscribe({
       next: (transactions) => {
         this.transactions = transactions;
@@ -72,6 +85,27 @@ export class PortfolioComponent implements OnInit {
     });
   }
 
+  // Обновление общего капитала
+  updateTotalCapital(transaction: any): void {
+    this.totalCapital +=
+      transaction.type === 'Revenues' ? +transaction.amount : -transaction.amount;
+  }
+
+  // Расчет общего капитала при загрузке
+  calculateTotalCapital(): void {
+    this.totalCapital = this.transactions.reduce((acc, transaction) => {
+      // Проверяем тип транзакции и корректно обновляем капитал
+      return acc + (transaction.type === 'Revenue' ? +transaction.amount : -transaction.amount);
+    }, 0);
+  }
+
+  convertAmount(amount: number, currency: string): number {
+    if (!this.currencyRates || !this.currencyRates[currency]) {
+      return amount; // Возврат оригинального значения, если нет курса
+    }
+    return amount * this.currencyRates[currency];
+  }
+
   // Добавление новой транзакции
   addTransaction(transaction: { type: string; amount: number; date: string; category: string }): void {
     if (!transaction.type || !transaction.amount || !transaction.date || !transaction.category) {
@@ -91,63 +125,76 @@ export class PortfolioComponent implements OnInit {
     });
   }
 
-
-  filterTransactions(event: any): void {
-    const filterType = event.value;
-
-    if (filterType === 'custom') {
+  // Фильтрация транзакций по диапазону дат
+  applyCustomDateFilter(): void {
+    if (this.currentFilterType === 'custom') {
       const { start, end } = this.range.value;
-
-      // Включение фильтрации по пользовательским датам
-      this.customDateFilter = filterType === 'custom';
-
-      this.transactionService
-        .filterTransactionsByCustomDateService(start, end)
-        .subscribe({
-          next: (filteredTransactions) => {
-            this.transactions = filteredTransactions;
-          },
-          error: (err) => {
-            console.error('Failed to filter transactions:', err);
-          },
+      if (start && end) {
+        this.transactions = this.originalTransactions.filter((transaction) => {
+          const transactionDate = new Date(transaction.date);
+          return transactionDate >= new Date(start) && transactionDate <= new Date(end);
         });
+      } else {
+        console.error('Both start and end dates must be selected');
+      }
     } else {
-      this.transactionService.filterTransactionsByTypeService(filterType).subscribe({
-        next: (filteredTransactions) => {
-          this.transactions = filteredTransactions;
-        },
-        error: (err) => {
-          console.error('Failed to filter transactions:', err);
-        },
-      });
+      this.filterTransactionsByType(this.currentFilterType);
     }
   }
 
+  filterTransactionsByType(filterType: string): void {
+    const today = new Date();
 
-  // Обновление общего капитала
-  updateTotalCapital(transaction: any): void {
-    this.totalCapital +=
-      transaction.type === 'Revenues' ? +transaction.amount : -transaction.amount;
-  }
+    switch (this.currentFilterType) {
+      case 'day':
+        // Фильтрация по сегодняшнему дню
+        this.transactions = this.originalTransactions.filter((transaction) => {
+          const transactionDate = new Date(transaction.date);
+          return (
+            transactionDate.toDateString() === today.toDateString()
+          );
+        });
+        break;
 
-  // Расчет общего капитала при загрузке
-  calculateTotalCapital(): void {
-    this.totalCapital = this.transactions.reduce((acc, transaction) => {
-      // Проверяем тип транзакции и корректно обновляем капитал
-      return acc + (transaction.type === 'Revenue' ? +transaction.amount : -transaction.amount);
-    }, 0);
-  }
+      case 'week':
+        // Фильтрация за последние 7 дней
+        const weekAgo = new Date();
+        weekAgo.setDate(today.getDate() - 7);
+        this.transactions = this.originalTransactions.filter((transaction) => {
+          const transactionDate = new Date(transaction.date);
+          return transactionDate >= weekAgo && transactionDate <= today;
+        });
+        break;
 
-  // Фильтрация транзакций по диапазону дат
-  applyCustomDateFilter(): void {
-    const { start, end } = this.range.value;
-    if (start && end) {
-      this.transactions = this.originalTransactions.filter((transaction) => {
-        const transactionDate = new Date(transaction.date);
-        return transactionDate >= start && transactionDate <= end;
-      });
-    } else {
-      console.error('Both start and end dates must be selected');
+      case 'month':
+        // Фильтрация за последний месяц
+        const monthAgo = new Date();
+        monthAgo.setMonth(today.getMonth() - 1);
+        this.transactions = this.originalTransactions.filter((transaction) => {
+          const transactionDate = new Date(transaction.date);
+          return transactionDate >= monthAgo && transactionDate <= today;
+        });
+        break;
+
+      case 'year':
+        // Фильтрация за последний год
+        const yearAgo = new Date();
+        yearAgo.setFullYear(today.getFullYear() - 1);
+        this.transactions = this.originalTransactions.filter((transaction) => {
+          const transactionDate = new Date(transaction.date);
+          return transactionDate >= yearAgo && transactionDate <= today;
+        });
+        break;
+
+      case 'custom':
+        // Фильтрация по выбранному диапазону дат
+        this.applyCustomDateFilter();
+        break;
+
+      default:
+        // Сброс фильтра (показ всех транзакций)
+        this.transactions = [...this.originalTransactions];
+        break;
     }
   }
 
